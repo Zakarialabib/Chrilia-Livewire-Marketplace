@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.2.1",
+        "@tailwindcss/jit": "^0.1.18",
+        "autoprefixer": "^10.1.0",
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.3.5",
+        "postcss-import": "^14.0.2",
+        "resolve-url-loader": "^4.0.0",
+        "sass": "^1.42.1",
+        "sass-loader": "^12.1.0",
+        "tailwindcss": "^2.1.4"
+    },
+    "dependencies": {
+        "@alpinejs/collapse": "^3.5.0",
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "alpinejs": "^3.5.0",
+        "apexcharts": "^3.29.0",
+        "dropzone": "^5.9.2",
+        "flatpickr": "^4.6.9",
+        "jquery": "^3.6.0",
+        "perfect-scrollbar": "^1.5.3",
+        "select2": "*",
+        "sweetalert2": "^11.1.7",
+        "tailwindcss-tables": "^0.4.0",
+        "turbolinks": "^5.2.0"
+    }
+}
