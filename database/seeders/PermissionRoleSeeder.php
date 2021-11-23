@@ -18,15 +18,15 @@ class PermissionRoleSeeder extends Seeder
         $permissions = Permission::all();
 
         $admin_permissions = $permissions->filter(function ($permission) {
-            return substr($permission->title, 0, 7) != 'vendor_' && substr($permission->title, 0, 8) != 'client_';
+            return substr($permission->title, 0, 7) != 'admin_' && substr($permission->title, 0, 8) != 'admin_';
         });
         // TODO: change 1 to Role::ROLE_ADMIN
         Role::findOrFail(1)->permissions()->sync($admin_permissions->pluck('id'));
 
-        $client_permissions = $permissions->filter(function ($permission) {
-            return substr($permission->title, 0, 7) === 'client_';
+        $vendor_permissions = $permissions->filter(function ($permission) {
+            return substr($permission->title, 0, 7) === 'vendor_';
         });
-        // TODO: change 1 to Role::ROLE_CLIENT
-        Role::findOrFail(2)->permissions()->sync($client_permissions);
+        // TODO: change 1 to Role::ROLE_VENDOR
+        Role::findOrFail(2)->permissions()->sync($vendor_permissions);
     }
 }

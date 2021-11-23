@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', __('Edit - ') . ($product ->code))
+@section('title', __('Edit - ') . ($product ->name))
 @section('content')
 
 <div class="card bg-white dark:bg-dark-eval-1">
@@ -7,7 +7,7 @@
         <div class="card-header-container flex flex-wrap">
             <h6 class="text-xl font-bold text-gray-700 dark:text-gray-300">
                 {{ __('Product') }} : 
-                {{ $product->id }}
+                {{ $product->name }} - {{ $product->code }}
             </h6>
         </div>
     </div>

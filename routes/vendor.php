@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Vendor\HomeController as VendorHomeController;
 use App\Http\Controllers\Vendor\OrderController as VendorOrderController;
 use App\Http\Controllers\Vendor\ProductController as VendorProductController;
@@ -14,11 +15,14 @@ Route::group(['prefix' => 'vendor', 'as' => 'vendor.', 'middleware' => ['auth', 
 
     // Orders
     Route::resource('orders', VendorOrderController::class, ['except' => ['store', 'update', 'destroy']]);
-    Route::get('box-print/{id}', [VendorOrderController::class, 'orderInvoice'])->name('orders.invoice');
+  
+    Route::get('invoice/{id}', [VendorOrderController::class, 'orderInvoice'])->name('orders.invoice');
     
      // Products
     Route::resource('products', VendorProductController::class, ['except' => ['store', 'update', 'destroy']]);
-       
+    
+    Route::post('product-import', [VendorProductController::class, 'productImport'])->name('product-import');
+    
     // User Profile
     Route::resource('profile', VendorUserController::class, ['except' => ['store', 'update', 'destroy']]);
     

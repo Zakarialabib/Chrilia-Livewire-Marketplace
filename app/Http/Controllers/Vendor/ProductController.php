@@ -7,6 +7,8 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -38,4 +40,19 @@ class ProductController extends Controller
         return view('vendor.product.show',compact('product'));
 
     }
+
+     /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function productImport(Request $request) 
+    {
+        $request->validate([
+            'excel' => 'required',
+        ]);
+
+        Excel::import(new ProductsImport, request()->file('excel'));
+
+        return back();
+    }
+
 }

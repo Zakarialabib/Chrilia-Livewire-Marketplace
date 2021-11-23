@@ -103,11 +103,6 @@
             <x-heroicon-o-truck class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
-    <x-sidebar.link title="{{ __('Orders') }}" href="{{ route('vendor.orders.index') }}" :isActive="request()->routeIs('vendor.orders.index')">
-        <x-slot name="icon">
-            <x-heroicon-o-truck class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
-        </x-slot>
-    </x-sidebar.link>
     <x-sidebar.link title="{{ __('Subscription') }}" href="{{ route('vendor.subscriptions.show') }}" :isActive="request()->routeIs('vendor.subscriptions.show')">
         <x-slot name="icon">
             <x-heroicon-o-location-marker class="flex-shrink-0 w-6 h-6" aria-hidden="true" />

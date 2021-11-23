@@ -7,8 +7,17 @@
                 <h6 class="text-xl font-bold text-gray-700 dark:text-gray-300">
                     {{ __('Product list') }}
                 </h6>
+                <form action="{{ route('vendor.product-import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="excel" id="excel" placeholder="select a file" />
+                    <button type="submit"
+                        class="btn rounded-md mb-4 md:text-sm sm:text-xs font-medium
+                             border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300">
+                        {{ __('Import') }}
+                    </button>
+                </form>
 
-                @can('client_order_management')
+                @can('vendor_product_management')
                     <div class="flex">
                         <a class="btn rounded-md mb-4 md:text-sm sm:text-xs font-medium border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300"
                             href="{{ route('vendor.products.create') }}">

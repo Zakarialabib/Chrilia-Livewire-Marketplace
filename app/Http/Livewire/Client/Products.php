@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Http\Livewire\Vendor\Product;
+namespace App\Http\Livewire\Client;
 
 use App\Http\Livewire\WithConfirmation;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\WithSorting;
-use Illuminate\Http\Response;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Role;
 
-class Index extends Component
+class Products extends Component
 {
-    use WithPagination, WithSorting, WithConfirmation, WithFileUploads;
+    use WithPagination, WithSorting,  WithConfirmation;
 
     public int $perPage;
+
+    public $vendors, $vendor_id;
+
+    public array $listsForFields = [];
 
     public array $orderable;
 
@@ -66,11 +67,15 @@ class Index extends Component
         $this->perPage           = 100;
         $this->paginationOptions = config('project.pagination.options');
         $this->orderable         = (new Product())->orderable;
+        $this->vendor_id = '';
+        $this->initListsForFields();
     }
 
     public function render()
     {
-        $query = Auth::user()->products()->advancedFilter([
+        $query = Product::when($this->vendor_id, function ($query) {
+            return $query->where('vendor_id', $this->vendor_id);
+        })->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
@@ -78,22 +83,11 @@ class Index extends Component
 
         $products = $query->paginate($this->perPage);
 
-        return view('livewire.vendor.product.index', compact('products'));
+        return view('livewire.client.products', compact('products'));
     }
 
-    public function deleteSelected()
+    protected function initListsForFields(): void
     {
-        abort_if(Gate::denies('client_product_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        Product::whereIn('id', $this->selected)->delete();
-
-        $this->resetSelected();
-    }
-
-    public function delete(Product $product)
-    {
-        abort_if(Gate::denies('client_product_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $product->delete();
+        $this->listsForFields['vendors'] = Role::find(2)->users->pluck('name','id');
     }
 }

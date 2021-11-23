@@ -15,28 +15,28 @@ class OrderController extends Controller
 {
     public function index()
     {
-        //abort_if(Gate::denies('client_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('vendor_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('vendor.order.index');
     }
 
     public function create()
     {
-        //abort_if(Gate::denies('client_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('vendor_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('vendor.order.create');
     }
 
     public function edit(Order $order)
     {
-        //abort_if(Gate::denies('client_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('vendor_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('vendor.order.edit',compact('order')); 
     }
 
     public function show(Order $order)
     {
-        //abort_if(Gate::denies('client_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('vendor_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
         return view('vendor.order.show',compact('order'));
     }

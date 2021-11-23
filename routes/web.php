@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController as HomePageController;
+use App\Http\Controllers\VendorController as HomeVendorController;
 use App\Http\Controllers\PostController as HomePostController;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/terms', [HomeController::class, 'terms'])->name('terms.show');
 Route::get('/pages', [HomePageController::class, 'index'])->name('page.index');
 
 Route::get('/page/{slug}', [HomePageController::class, 'show'])->name('page.show');
+
+Route::get('/store/{company_name}', [HomeVendorController::class, 'show'])->name('page.show');
 
 Route::get('/blog', [HomePostController::class, 'index'])->name('blog.index');
 

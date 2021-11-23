@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
-@section('title', __('Show - ') . ($product->code))
+@section('title', __('Show - ') . ($product->name))
 @section('content')
 <div class="card bg-white dark:bg-dark-eval-1">
     <div class="p-6 rounded-t rounded-r mb-0 border-b border-blueGray-200">
         <div class="card-header-container flex flex-wrap">
             <h6 class="text-xl font-bold text-gray-700 dark:text-gray-300">
                 {{ __('Product') }} :
-                {{ $product->id }}
+                {{ $product->name }} - {{ $product->code }} 
             </h6>
         </div>
     </div>
@@ -63,8 +63,8 @@
             </table>
         </div>
         
-        <div class="mb-4">
-            <a href="{{ route('vendor.orders.index') }}" class="btn rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition bg-gray-300 text-black hover:text-purple-800 hover:bg-purple-200 active:bg-purple-200 focus:ring-purple-300">
+        <div class="my-4">
+            <a href="{{ route('vendor.products.index') }}" class="btn rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition bg-gray-300 text-black hover:text-purple-800 hover:bg-purple-200 active:bg-purple-200 focus:ring-purple-300">
                   {{ __('Back') }}
             </a>
         </div>

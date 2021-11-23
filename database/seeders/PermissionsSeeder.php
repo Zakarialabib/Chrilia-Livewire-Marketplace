@@ -85,7 +85,7 @@ class PermissionsSeeder extends Seeder
             ],
             [
                 'id'    => 18,
-                'title' => 'client_order_management',
+                'title' => 'client_product_management',
             ],
             [
                 'id'    => 19,
@@ -112,12 +112,8 @@ class PermissionsSeeder extends Seeder
                 'title' => 'user_alert_access',
             ],	 
             [
-                'id'    => 25,
-                'title' => 'admin_dashboard',
-            ],
-            [
                 'id'    => 26,
-                'title' => 'settings_management',
+                'title' => 'admin_settings_management',
             ],
             [
                 'id'    => 27,
@@ -141,7 +137,7 @@ class PermissionsSeeder extends Seeder
             ],
             [
                 'id'    => 32,
-                'title' => 'user_alert_delete',
+                'title' => 'admin_user_alert_delete',
             ],
             [
                 'id'    => 33,
@@ -149,19 +145,27 @@ class PermissionsSeeder extends Seeder
             ],
             [
                 'id'    => 34,
-                'title' => 'subscription_create',
+                'title' => 'admin_subscription_create',
             ],
             [
                 'id'    => 35,
-                'title' => 'subscription_edit',
+                'title' => 'admin_subscription_edit',
             ],
             [
                 'id'    => 36,
-                'title' => 'subscription_delete',
+                'title' => 'admin_subscription_delete',
             ],
             [
                 'id'    => 37,
                 'title' => 'vendor_dashboard',
+            ],
+            [
+                'id'    => 38,
+                'title' => 'vendor_order_management',
+            ],
+            [
+                'id'    => 39,
+                'title' => 'vendor_product_management',
             ],
             
         ];

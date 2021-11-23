@@ -2,12 +2,17 @@
 
 namespace App\Imports;
 
+use App\Support\Helper;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ProductsImport implements ToModel
+class ProductsImport implements ToModel, WithHeadingRow
 {
+    use Importable;
+
     /**
     * @param array $row
     *
@@ -16,12 +21,12 @@ class ProductsImport implements ToModel
     public function model(array $row)
     {
         $product = new Product([
-           'code' => $row[0],
-           'name' => $row[1],
-           'image' => $row[2],
-           'description' => $row[3],
-           'status' => $row[4],
-           'price' => $row[5],
+           'code' => Helper::genCode(),
+           'name' => $row['name'],
+           'price' => $row['price'],
+           'wholesale_price' => $row['wholesale_price'],
+           'status' => $row['status'],
+           'stock' => $row['stock'],
         ]);
 
         Auth::user()->products()->save($product);

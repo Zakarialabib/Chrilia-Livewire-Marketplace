@@ -120,7 +120,7 @@
             </x-slot>
 
             <x-slot name="footer">
-                <button class="btn border-gray-300 text-gray-700 dark:text-gray-300 active:bg-gray-50 active:text-gray-800 hover:text-gray-500 active:bg-dark-eval-1 active:text-gray-300 hover:text-gray-700" wire:click="$set('showDeleteModal', false)">{{ __('Cancel') }}</button>
+                <button class="btn border-gray-300 text-gray-700 dark:text-gray-300 active:bg-gray-50 dark:active:text-gray-800 hover:text-gray-500 dark:active:bg-dark-eval-1 active:text-gray-300 dark:hover:text-gray-700" wire:click="$set('showDeleteModal', false)">{{ __('Cancel') }}</button>
 
                 <button class="btn text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 border-indigo-600" type="submit">{{ __('Delete') }}</button>
             </x-slot>

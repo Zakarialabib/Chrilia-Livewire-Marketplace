@@ -5,7 +5,7 @@ use App\Http\Controllers\Client\HomeController as ClientHomeController;
 use App\Http\Controllers\Client\OrderController as ClientOrderController;
 use App\Http\Controllers\Client\UserController as ClientUserController;
 
-Route::group(['prefix' => 'client', 'as' => 'vendor.', 'middleware' => ['auth', 'role:CLIENT']], function () {
+Route::group(['prefix' => 'client', 'as' => 'client.', 'middleware' => ['auth', 'role:CLIENT']], function () {
 
     // Client Dashboard
     Route::get('/dashboard', [ClientHomeController::class, 'index'])->name('home');

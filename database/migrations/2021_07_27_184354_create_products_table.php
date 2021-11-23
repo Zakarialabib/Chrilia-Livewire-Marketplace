@@ -19,11 +19,12 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->decimal('price', 10,0);
-            $table->text('description');
+            $table->decimal('wholesale_price', 10,0)->nullable();
+            $table->enum('category',['none','1','2','3','4'])->default('none');
+            $table->text('description')->nullable();
             $table->integer('status')->default(0);
             $table->integer('stock')->default(0);
-            $table->string('fees')->nullable();
-            $table->foreignId('client_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('vendor_id')->nullable()->constrained('users')->onDelete('set null');
             $table->foreignId('admin_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
         });

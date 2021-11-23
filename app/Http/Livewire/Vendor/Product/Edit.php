@@ -51,17 +51,14 @@ class Edit extends Component
             ],
             'product.description' => [
                 'string',
-                'required',
             ],
             'product.price' => [
                 'numeric',
                 'required',
             ],
-            'product.category'  => [
-                'in:default,sm,md,lg,xl',
-            ],
-            'product.fees' => [
-                'string'
+            'product.wholesale_price' => [
+                'numeric',
+                'required',
             ],
         ];
     }

@@ -91,7 +91,7 @@ class Index extends Component
 
     public function deleteSelected()
     {
-        abort_if(Gate::denies('client_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('vendor_order_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         Order::whereIn('id', $this->selected)->delete();
 
@@ -100,7 +100,7 @@ class Index extends Component
 
     public function delete(Order $order)
     {
-        abort_if(Gate::denies('client_order_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('vendor_order_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $order->delete();
     }

@@ -13,7 +13,7 @@
         </div>
 
         <div class="p-4">
-            @livewire('vendor.orders')
+            @livewire('client.products')
         </div>
     </div>
 </div>

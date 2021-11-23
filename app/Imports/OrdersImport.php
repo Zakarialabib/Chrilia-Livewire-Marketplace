@@ -24,6 +24,6 @@ class OrdersImport implements ToModel
            'price' => $row[5],
         ]);
 
-        Auth::user()->products()->save($product);
+        Auth::user()->products()->save($order);
     }
 }

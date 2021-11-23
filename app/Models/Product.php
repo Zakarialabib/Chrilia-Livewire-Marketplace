@@ -21,6 +21,8 @@ class Product extends Model
         ), true);
         parent::__construct($attributes);
     }
+    const STATUS_ACITVE = 1;
+    const STATUS_INACTIVE = 0;
 
     const STOCK_ACITVE = 1;
     const STOCK_INACTIVE = 0;
@@ -30,43 +32,44 @@ class Product extends Model
         'id',
         'code',
         'status',
+        'stock',
         'name',
         'price',
-    ];
+        'wholesale_price',
+        ];
 
     public $filterable = [
         'created_at',
         'id',
         'code',
         'status',
+        'stock',
         'name',
-        'price'
+        'price',
+        'wholesale_price',
     ];
     protected $fillable = [
         'code',
         'id',
         'name',
         'price',
+        'stock',
+        'status',
+        'wholesale_price',
         'image',
-        'client_id',
+        'vendor_id',
+        'admin_id',
         'description',
-        'quantity' , // will be add
         'category', // not required 
-        'fees', // on category
     ];
     protected $dates = [
         'created_at',
         'updated_at',
     ];
 
-    public function client()
+    public function vendor()
     {
-        return $this->belongsTo(User::class, 'client_id', 'id');
-    }
-
-    public function stock()
-    {
-        return $this->hasMany(Stock::class);
+        return $this->belongsTo(User::class, 'vendor_id', 'id');
     }
 
 }

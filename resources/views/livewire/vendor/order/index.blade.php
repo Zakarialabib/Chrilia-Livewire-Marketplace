@@ -7,7 +7,7 @@
                     <option value="{{ $value }}">{{ $value }}</option>
                 @endforeach
             </select>
-            @can('client_order_management')
+            @can('vendor_order_delete')
                 <button
                     class="text-purple-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-purple-500 dark:border-gray-300 hover:text-purple-700  active:bg-purple-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
                     type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled"
@@ -82,7 +82,7 @@
                         {{ $order->price }} {{ config('settings.currency_symbol') }}
                     </x-table.td>
                     <x-table.td>
-                        @can('client_order_management')
+                        @can('vendor_order_management')
                             <div class="flex item-center justify-center cursor-pointer">
                                 <a class="btn btn-sm btn-primary " href="{{ route('vendor.orders.show', $order) }}">
                                     <x-heroicon-o-eye class="h-4 w-4" />

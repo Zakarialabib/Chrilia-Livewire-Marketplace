@@ -6,7 +6,7 @@
                 <button type="button" class="btn btn-info btn-sm deselect-all-button">{{ __('Deselect all') }}</button>
             </div>
         @endif
-        <select class="select2 p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500" data-minimum-results-for-search="Infinity" data-placeholder="{{ __('Select your option') }}" {{ $attributes }}>
+        <select class="select2 p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500" data-minimum-results-for-search="Infinity" data-placeholder="{{ __('Choose option') }}" {{ $attributes }}>
             @if(!isset($attributes['multiple']))
                 <option></option>
             @endif
@@ -38,7 +38,7 @@
         function initSelect () {
             initButtons()
             el.select2({
-                placeholder: '{{ __('Select your option') }}',
+                placeholder: '{{ __('Choose option') }}',
                 allowClear: !el.attr('required')
             })
         }
