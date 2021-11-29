@@ -6,6 +6,11 @@
             <x-icons.dashboard class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
+    <x-sidebar.link title="{{ __('Products') }}" href="{{ route('admin.products.index') }}" :isActive="request()->routeIs('admin.products.index')">
+        <x-slot name="icon">
+            <x-heroicon-o-truck class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
     <x-sidebar.link title="{{ __('Orders') }}" href="{{ route('admin.orders.index') }}" :isActive="request()->routeIs('admin.orders.index')">
         <x-slot name="icon">
             <x-heroicon-o-truck class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
@@ -71,11 +76,6 @@
             :active="request()->routeIs('admin.profile')" />
         <x-sidebar.sublink title="{{ __('General Settings') }}" href="{{ route('admin.settings') }}"
         :active="request()->routeIs('admin.settings')" />
-        
-        {{-- @if (config('settings.enableSMS') == 1)
-        <x-sidebar.sublink title="{{ __('Sms Configuration') }}" href="{{ route('admin.smsgateway') }}"
-        :active="request()->routeIs('admin.smsgateway')" />
-        @endif --}}
 
         <x-sidebar.sublink title="{{ __('Email Configuration') }}" href="{{ route('admin.smpt') }}"
         :active="request()->routeIs('admin.smpt')" />
@@ -103,14 +103,14 @@
             <x-heroicon-o-truck class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
-    <x-sidebar.link title="{{ __('Subscription') }}" href="{{ route('vendor.subscriptions.show') }}" :isActive="request()->routeIs('vendor.subscriptions.show')">
-        <x-slot name="icon">
-            <x-heroicon-o-location-marker class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
-        </x-slot>
-    </x-sidebar.link>
     <x-sidebar.link title="{{ __('Profile') }}" href="{{ route('vendor.profile.index') }}" :isActive="request()->routeIs('vendor.profile.index')">
         <x-slot name="icon">
             <x-heroicon-o-user class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+    <x-sidebar.link title="{{ __('Store') }}" href="{{ route('store.show', Auth::user()->company_name ) }}" >
+        <x-slot name="icon">
+            <x-heroicon-o-globe class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
     @endcan

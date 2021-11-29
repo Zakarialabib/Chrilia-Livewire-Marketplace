@@ -13,11 +13,11 @@
         <div class="flex flex-wrap -m-2 py-5">
             <div class="lg:w-1/3 md:w-1/2 sm:w-full p-2">
                 <label>{{ __('Key') }}:</label>
-                <input type="text" name="key" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500" placeholder="Enter Key...">
+                <input type="text" name="key" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500" placeholder="Enter Key...">
             </div>
             <div class="lg:w-1/3 md:w-1/2 sm:w-full p-2">
                 <label>{{ __('Value') }}:</label>
-                <input type="text" name="value" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500" placeholder="Enter Value...">
+                <input type="text" name="value" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500" placeholder="Enter Value...">
             </div>
             <div class="lg:w-1/3 md:w-1/2 sm:w-full p-2">
                 <button type="submit" class="btn btn-success w-full mt-10">{{ __('Add') }}</button>

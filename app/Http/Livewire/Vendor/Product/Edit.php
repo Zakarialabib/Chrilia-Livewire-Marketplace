@@ -4,10 +4,15 @@ namespace App\Http\Livewire\Vendor\Product;
 
 use Livewire\Component;
 use App\Models\Product;
+use Livewire\WithFileUploads;
 
 class Edit extends Component
 {
+    use WithFileUploads;
+
     public Product $product;
+
+    public $image ;
     
     protected $listeners = [
         'submit',
@@ -16,50 +21,37 @@ class Edit extends Component
     public function mount(Product $product)
     {
         $this->product = $product;
+        $this->image = $product->image;
+
     }
 
     public function render()
     {
         return view('livewire.vendor.product.edit');
     }
+    protected $rules = [
+    'product.code'          => 'required',
+    'product.name'        => 'required',
+    'product.description'       => 'nullable',
+    'product.category'      => 'nullable',
+    'product.price'       => 'required|numeric',
+    'product.wholesale_price'       => 'numeric',
+    ];
 
     public function submit()
     {
-        $this->validate();
+        
+        if($this->image == NULL){
+            $filename = $this->image->store("/");
+            $this->product->image = $filename;
+        }
+        
 
-        $this->order->save();
+        $this->product->update();
 
         $this->alert('success', __('Product updated successfully!') );
 
-        return redirect()->back();   
-    }
-
-    protected function rules(): array
-    {
-        return [
-            'product.code' => [
-                'string',
-                'required',
-            ],
-            'product.name' => [
-                'string',
-                'required',
-            ],
-            'product.image' => [
-                'string',
-                'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ],
-            'product.description' => [
-                'string',
-            ],
-            'product.price' => [
-                'numeric',
-                'required',
-            ],
-            'product.wholesale_price' => [
-                'numeric',
-                'required',
-            ],
-        ];
+        return redirect()->route('vendor.products.index');
+ 
     }
 }

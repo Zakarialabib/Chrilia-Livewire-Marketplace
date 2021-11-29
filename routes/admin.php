@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'role:ADMIN']], function () {
    
@@ -48,7 +49,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
 
     // Users
     Route::resource('users', UserController::class, ['except' => ['store', 'update', 'destroy']]);
-
+    
+    // Products
+    Route::resource('products', AdminProductController::class, ['except' => ['store', 'update', 'destroy']]);
+    
     // Orders
     Route::resource('orders', AdminOrderController::class, ['except' => ['store', 'update', 'destroy']]);
     Route::get('order-invoice/{id}', [AdminOrderController::class, 'orderInvoice'])->name('orders.invoice');
@@ -70,10 +74,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     // Settings
     Route::get('settings', [SettingController::class, 'index'])->name('settings');
     Route::post('settings',  [SettingController::class, 'update'])->name('settings.update');
-
-    Route::get('smsgateway', [SettingController::class, 'smsGateway'])->name('smsgateway');
-
-    Route::get('smsgateway-edit/{id}', [SettingController::class, 'smsgatewayEdit'])->name('smsgateway.edit');
     
     // Language and Translations
     Route::get('languages', [LanguageController::class, 'index'])->name('languages');
@@ -86,5 +86,3 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
 });
 
 Route::get('/language/{locale}', [LanguageController::class , 'changeLanguage'])->name('change_language');
-
-

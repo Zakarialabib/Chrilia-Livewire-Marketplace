@@ -147,7 +147,7 @@ textarea.form-control {
 }
 
 .table th {
-  @apply align-middle border border-solid text-xs uppercase whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500
+  @apply align-middle border border-solid text-xs uppercase whitespace-nowrap font-semibold text-left text-blueGray-500
 }
 
 .table td {

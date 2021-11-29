@@ -1,5 +1,5 @@
 <div>
-    <a class="inline-flex items-center p-2 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 bg-white text-gray-500 hover:bg-gray-100 focus:ring-purple-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md"
+    <a class="inline-flex items-center p-2 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 bg-white text-gray-500 hover:bg-gray-100 focus:ring-blue-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md"
         onclick="openDropdown(event,'nav-notifications-dropdown')">
         <x-heroicon-o-bell class="w-6 h-6" aria-hidden="true" />
         @if ($new_alert_count = auth()->user()->notifications->where('read_at', null)->count())
@@ -10,7 +10,7 @@
         @endif
     </a>
     <div id="nav-notifications-dropdown" data-popper-placement="bottom-start"
-        class="bg-white text-gray-500 focus:ring-purple-500 dark:text-gray-400 dark:bg-dark-eval-1 transition-colors z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 hidden"
+        class="bg-white text-gray-500 focus:ring-blue-500 dark:text-gray-400 dark:bg-dark-eval-1 transition-colors z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 hidden"
         style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(617px, 58px);">
         @foreach ($notifications as $key => $notification)
             @if ($notification->read_at != true)

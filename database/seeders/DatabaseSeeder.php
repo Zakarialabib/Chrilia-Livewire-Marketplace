@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             // SubscriptionUserSeeder::class,
             // OrderSeeder::class,
             // ProductSeeder::class,
+            PostSeeder::class,
             // CreateLanguages::class,
             // SettingsTableSeeder::class,
             // CreateSections::class

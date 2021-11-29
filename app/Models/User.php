@@ -50,9 +50,9 @@ class User extends Authenticatable
         'phone',
         'address',
         'status',
-        'bank_name', 
-        'rib_number',
-        // 'balance',
+        'banner_image',
+        'whatsapp_number', 
+        'telegram_link',
     ];
 
     protected $dates = [

@@ -24,6 +24,7 @@ class ProductsImport implements ToModel, WithHeadingRow
            'code' => Helper::genCode(),
            'name' => $row['name'],
            'price' => $row['price'],
+           'image' => $row['image'],
            'wholesale_price' => $row['wholesale_price'],
            'status' => $row['status'],
            'stock' => $row['stock'],

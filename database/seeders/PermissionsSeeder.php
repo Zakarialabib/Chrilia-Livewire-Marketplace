@@ -112,6 +112,10 @@ class PermissionsSeeder extends Seeder
                 'title' => 'user_alert_access',
             ],	 
             [
+                'id'    => 25,
+                'title' => 'admin_product_delete',
+            ],
+            [
                 'id'    => 26,
                 'title' => 'admin_settings_management',
             ],
@@ -167,7 +171,6 @@ class PermissionsSeeder extends Seeder
                 'id'    => 39,
                 'title' => 'vendor_product_management',
             ],
-            
         ];
 
         Permission::insert($permissions);

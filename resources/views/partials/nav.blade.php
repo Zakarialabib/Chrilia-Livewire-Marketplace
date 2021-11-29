@@ -69,7 +69,7 @@
              aria-haspopup="true" :aria-expanded="open ? 'true' : 'false'">
              <span class="inline-flex rounded-md">
                 <button type="button"
-                    class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md border-0 focus:outline-none focus:ring bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300 transition ease-in-out duration-150">
+                    class="inline-flex items-center px-3 py-2 text-xs bg-blue-900 text-white hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300 font-medium uppercase rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
                     {{ Auth::user()->name }}
                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                         fill="currentColor">

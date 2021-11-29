@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Role;
+use Carbon\Carbon;
 
 class Products extends Component
 {
@@ -16,7 +17,7 @@ class Products extends Component
 
     public int $perPage;
 
-    public $vendors, $vendor_id;
+    public $vendors, $vendor_id,$category,$newest,$oldest;
 
     public array $listsForFields = [];
 
@@ -67,19 +68,22 @@ class Products extends Component
         $this->perPage           = 100;
         $this->paginationOptions = config('project.pagination.options');
         $this->orderable         = (new Product())->orderable;
+        $this->category = '';
         $this->vendor_id = '';
         $this->initListsForFields();
     }
 
     public function render()
-    {
-        $query = Product::when($this->vendor_id, function ($query) {
-            return $query->where('vendor_id', $this->vendor_id);
-        })->advancedFilter([
-            's'               => $this->search ?: null,
-            'order_column'    => $this->sortBy,
-            'order_direction' => $this->sortDirection,
-        ]);
+    { 
+        $query = Product::when($this->category, function ($query) {
+            return $query->where('category', $this->category);
+        })->when($this->vendor_id, function ($query) {
+           return $query->where('vendor_id', $this->vendor_id);})
+                        ->advancedFilter([
+                            's'               => $this->search ?: null,
+                            'order_column'    => $this->sortBy,
+                            'order_direction' => $this->sortDirection,
+                        ]);
 
         $products = $query->paginate($this->perPage);
 

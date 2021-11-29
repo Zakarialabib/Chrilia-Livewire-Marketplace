@@ -11,7 +11,9 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public Product $product;    
+    public Product $product;  
+    
+    public $image ;
     
     protected $listeners = [
         'submit',
@@ -30,12 +32,22 @@ class Create extends Component
     public function submit()
     {
         $this->validate();
+        
+        if($this->image){
+            $filename = $this->image->store("/");
+        }
+        $this->product->image = $filename;
+        // dd($this->product);
+        
+        $this->product->status = 1;
 
+        $this->product->stock = 1;
+        
         $this->product = Auth::user()->products()->save($this->product);
         
         $this->alert('success', __('Product created successfully!') );
 
-        return redirect()->back();   
+        return redirect()->route('vendor.products.index'); 
     }
 
 
@@ -50,9 +62,8 @@ class Create extends Component
                 'string',
                 'required',
             ],
-            'product.image' => [
-                'string',
-                'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product.category' => [
+                'nullable' 
             ],
             'product.description' => [
                 'string',

@@ -7,6 +7,12 @@
                 <h6 class="text-xl font-bold text-gray-700 dark:text-gray-300">
                     {{ __('Subscription list') }}
                 </h6>
+                <div class="float-right">
+                    <a href="{{ route('admin.subscriptions.index') }}"
+                        class="btn rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition bg-gray-300 text-black hover:text-blue-800 hover:bg-blue-200 active:bg-blue-200 focus:ring-blue-300">
+                        {{ __('Go back') }}
+                    </a>
+                </div>
             </div>
         </div>
         <div class="p-4">
@@ -15,10 +21,10 @@
                     <thead>
                         <tr class="text-left border-b border-gray-300">
                             <th class="px-4 py-3">
-                                {{ __('Subscription Name') }}
+                                {{ __('Subscription name') }}
                             </th>
                             <th class="px-4 py-3">
-                                {{ __('Subscription Details') }}
+                                {{ __('Subscription details') }}
                             </th>
                             <th class="px-4 py-3">
                                 {{ __('Price') }}

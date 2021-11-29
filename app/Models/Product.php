@@ -27,8 +27,13 @@ class Product extends Model
     const STOCK_ACITVE = 1;
     const STOCK_INACTIVE = 0;
 
+    const CAT_NEW = 1;
+    const CAT_HOT = 2;
+    const CAT_SALE = 3;
+    
     public $orderable = [
         'created_at',
+        'updated_at',
         'id',
         'code',
         'status',
@@ -60,7 +65,7 @@ class Product extends Model
         'vendor_id',
         'admin_id',
         'description',
-        'category', // not required 
+        'category',
     ];
     protected $dates = [
         'created_at',
@@ -71,5 +76,4 @@ class Product extends Model
     {
         return $this->belongsTo(User::class, 'vendor_id', 'id');
     }
-
 }

@@ -2,7 +2,7 @@
     <div class="flex flex-wrap justify-center">
         <div class="lg:w-1/2 md:w-1/2 sm:w-full flex flex-wrap my-md-0 my-2">
             <select wire:model="perPage"
-                class="w-20 block p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm focus:shadow-outline-blue focus:border-purple-300 mr-3">
+                class="w-20 block p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm focus:shadow-outline-blue focus:border-blue-300 mr-3">
                 @foreach ($paginationOptions as $value)
                     <option value="{{ $value }}">{{ $value }}</option>
                 @endforeach
@@ -10,24 +10,24 @@
 
             {{-- @can('order_delete') // To Do // --}}
             <button
-                class="text-purple-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-purple-500 dark:border-gray-300 hover:text-purple-700  active:bg-purple-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
+                class="text-blue-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-blue-500 dark:border-gray-300 hover:text-blue-700  active:bg-blue-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
                 type="button" wire:click="$toggle('showDeleteModal')" wire:loading.attr="disabled">
                 <x-heroicon-o-trash class="h-3 w-3" />
             </button>
             {{-- @endcan --}}
 
             <button wire:click="export" type="button"
-                class="text-purple-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-purple-500 dark:border-gray-300 hover:text-purple-700  active:bg-purple-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150">
+                class="text-blue-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-blue-500 dark:border-gray-300 hover:text-blue-700  active:bg-blue-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150">
                 {{ __('XLS') }}
             </button>
-            <button wire:click="exportInvoice" type="button" class="text-purple-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-purple-500 dark:border-gray-300 hover:text-purple-700  active:bg-purple-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150">
+            <button wire:click="exportInvoice" type="button" class="text-blue-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-blue-500 dark:border-gray-300 hover:text-blue-700  active:bg-blue-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150">
             {{ __('PDF') }}
             </button>
         </div>
 
         <div class="lg:w-1/2 md:w-1/2 sm:w-full my-2 my-md-0">
             <input type="text" wire:model.debounce.300ms="search" placeholder="{{ __('Search') }}"
-                class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500" />
+                class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500" />
         </div>
     </div>
     <div class="flex flex-wrap justify-center">
@@ -36,14 +36,14 @@
                 <div class="lg:w-1/3 md:w-1/2 sm:w-full p-2">
                     <x-label for="start_date" :value="__('Start Date')" required />
                     <input wire:model.defer="start_date" type="date"
-                        class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500"
+                        class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"
                         name="start_date">
                     <x-input-error for="start_date" />
                 </div>
                 <div class="lg:w-1/3 md:w-1/2 sm:w-full p-2">
                     <x-label for="end_date" :value="__('End Date')" required />
                     <input wire:model.defer="end_date" type="date"
-                        class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500"
+                        class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"
                         name="end_date">
                     <x-input-error for="end_date" />
                 </div>
@@ -55,11 +55,11 @@
             </div>
             <div class="w-full p-2">
                 <button type="submit"
-                    class="btn mr-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300">
+                    class="leading-4 md:text-sm sm:text-xs bg-blue-900 text-white hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300 font-medium uppercase px-6 py-2 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                     <span wire:target="filterDate" wire:loading role="status" aria-hidden="true">
                         <x-loading />
                     </span>
-                    {{ __('Filter Date') }}
+                    {{ __('Filter') }}
                 </button>
             </div>
         </form>
@@ -189,7 +189,7 @@
                 <button type="button"
                     class="btn border-gray-300 text-gray-700 dark:text-gray-300 active:bg-gray-50 active:text-gray-800 hover:text-gray-500 dark:active:bg-dark-eval-1 dark:active:text-gray-300 dark:hover:text-gray-700"
                     wire:click="$set('showDeleteModal', false)">
-                    {{ __('Cancel') }}
+                    {{ __('Go back') }}
                 </button>
 
                 <button type="button"

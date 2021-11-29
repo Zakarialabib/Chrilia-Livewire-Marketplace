@@ -64,13 +64,6 @@ class Create extends Component
             'user.address' => [
                 'string',
             ],
-            'user.bank_name' => [
-                'string',
-            ],
-            'user.rib_number' => [
-                'string',
-                'numeric',
-            ],
             'password' => [
                 'string',
                 'required',

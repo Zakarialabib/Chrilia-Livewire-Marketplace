@@ -7,7 +7,8 @@
           <h6 class="text-xl font-bold text-gray-700 dark:text-gray-300">
               {{ __('Post list') }}
           </h6>
-          <a class="btn rounded-md mb-4 md:text-sm sm:text-xs font-medium border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300" href="{{ route('admin.posts.create') }}">
+          <a class="leading-4 md:text-sm sm:text-xs bg-blue-900 text-white hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300 font-medium uppercase px-6 py-2 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
+             href="{{ route('admin.posts.create') }}">
              {{ __('Create post') }}
              </a>
       </div>

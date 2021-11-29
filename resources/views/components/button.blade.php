@@ -4,10 +4,10 @@
     $baseClasses = 'inline-flex items-center transition-colors font-medium select-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2';
     switch ($variant) {
         case 'primary':
-            $variantClasses = 'bg-purple-500 text-white hover:bg-purple-600 focus:ring-purple-500';
+            $variantClasses = 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500';
         break;
         case 'secondary':
-            $variantClasses = 'bg-white text-gray-500 hover:bg-gray-100 focus:ring-purple-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200';
+            $variantClasses = 'bg-white text-gray-500 hover:bg-gray-100 focus:ring-blue-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200';
         break;
         case 'success':
             $variantClasses = 'bg-green-500 text-white hover:bg-green-600 focus:ring-green-500';
@@ -25,7 +25,7 @@
             $variantClasses = 'bg-black text-gray-300 hover:text-white hover:bg-gray-800 focus:ring-black dark:hover:bg-dark-eval-3';
         break;
         default:
-            $variantClasses = 'bg-purple-500 text-white hover:bg-purple-600 focus:ring-purple-500';
+            $variantClasses = 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500';
     }
     switch ($size) {
         case 'sm':

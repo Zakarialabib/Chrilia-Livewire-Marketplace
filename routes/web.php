@@ -25,7 +25,7 @@ Route::get('/pages', [HomePageController::class, 'index'])->name('page.index');
 
 Route::get('/page/{slug}', [HomePageController::class, 'show'])->name('page.show');
 
-Route::get('/store/{company_name}', [HomeVendorController::class, 'show'])->name('page.show');
+Route::get('/store/{company_name}', [HomeVendorController::class, 'show'])->name('store.show');
 
 Route::get('/blog', [HomePostController::class, 'index'])->name('blog.index');
 

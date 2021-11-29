@@ -116,14 +116,6 @@ class Edit extends Component
             'user.address' => [
                 'string',
             ],
-            'user.bank_name' => [
-                'string',
-            ],
-            'user.rib_number' => [
-                'string',
-                'numeric',
-                'min:5|max:24'
-            ],
             'password' => [
                 'string',
             ],

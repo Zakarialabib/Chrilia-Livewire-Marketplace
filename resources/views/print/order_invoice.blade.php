@@ -154,7 +154,7 @@
     <div class="hidden-print container ">
         <div class="py-5 row">
             <a href="{{ $url }}" class="btn btn-secondary col-6 mt-2 btn-block">
-                {{ __('Back') }}</a>
+                {{ __('Go back') }}</a>
             <button onclick="window.print();" class="btn btn-primary col-6 btn-block">
                 {{ __('Print') }}</button>
         </div>

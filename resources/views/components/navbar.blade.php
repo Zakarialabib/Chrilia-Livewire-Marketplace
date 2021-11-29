@@ -26,6 +26,10 @@
             <x-heroicon-o-moon x-show="!isDarkMode" aria-hidden="true" class="w-6 h-6" />
             <x-heroicon-o-sun x-show="isDarkMode" aria-hidden="true" class="w-6 h-6" />
         </x-button>
+        <button onClick="window.location.reload();"
+            class="inline-flex items-center transition-colors font-medium select-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 p-2 bg-white text-gray-500 hover:bg-gray-100 focus:ring-blue-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md md:inline-flex">
+            <x-heroicon-o-refresh class="flex-shrink-0 w-5 h-5 mr-2" aria-hidden="true" />
+        </button>
 
         <ul class="items-center md:flex flex-wrap list-none">
             <li class="inline-block relative">
@@ -33,26 +37,18 @@
             </li>
 
             <li class="inline-block relative">
-                <a
-                    class="inline-flex items-center p-2 transition-colors font-medium select-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 bg-white text-gray-500 hover:bg-gray-100 focus:ring-purple-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md">
-                    <button onClick="window.location.reload();">
-                        <x-heroicon-o-refresh class="flex-shrink-0 w-5 h-5 mr-2" aria-hidden="true" />
-                    </button>
-                </a>
-            </li>
-
-            <li class="inline-block relative">
-                <a class="inline-flex items-center p-2 transition-colors font-medium select-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 bg-white text-gray-500 hover:bg-gray-100 focus:ring-purple-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md"
+                <a class="inline-flex items-center p-2 transition-colors font-medium select-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 bg-white text-gray-500 hover:bg-gray-100 focus:ring-blue-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md"
                     onclick="openDropdown(event,'language-dropdown')" aria-haspopup="true"
                     :aria-expanded="open ? 'true' : 'false'">
-                    <img src="{{ flagImageUrl(\Illuminate\Support\Facades\App::getLocale()) }}" class="px-2">
+                    <img src="{{ flagImageUrl(\Illuminate\Support\Facades\App::getLocale()) }}"
+                        class="px-2">
                     @if (count($languages) > 1)
                         <x-heroicon-o-chevron-down class="flex-shrink-0 w-4 h-4" aria-hidden="true" />
                     @endif
                 </a>
                 @if (count($languages) > 1)
                     <ul id="language-dropdown"
-                        class="bg-white text-gray-500 focus:ring-purple-500 dark:text-gray-400 dark:bg-dark-eval-1 transition-colors z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 hidden"
+                        class="bg-white text-gray-500 focus:ring focus:ring-offset-2 focus:ring-blue-500 dark:text-gray-400 dark:bg-dark-eval-1 transition-colors z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 hidden"
                         x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0"
                         style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(617px, 58px);">
@@ -72,15 +68,14 @@
             </li>
         </ul>
         <ul class="flex-col md:flex-row list-none items-center md:flex">
-
-            <a class="inline-flex items-center p-2 transition-colors font-medium select-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 bg-white text-gray-500 hover:bg-gray-100 focus:ring-purple-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md"
+            <a class="inline-flex items-center p-2 transition-colors font-medium select-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 text-gray-500 hover:bg-gray-100 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md"
                 onclick="openDropdown(event,'user-dropdown')" aria-haspopup="true"
                 :aria-expanded="open ? 'true' : 'false'">
                 {{ Auth::user()->name }}
                 <x-heroicon-o-chevron-down class="flex-shrink-0 w-4 h-4" aria-hidden="true" />
             </a>
             <div data-popper-placement="bottom-start" id="user-dropdown"
-                class="bg-white text-gray-500 focus:ring-purple-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 transition-colors z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 hidden"
+                class="bg-white text-gray-500 focus:ring focus:ring-offset-2 focus:ring-blue-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 transition-colors z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 hidden"
                 style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(617px, 58px);">
                 @if (auth()->user()->isAdmin())
                     <a href="{{ route('admin.profile') }}"

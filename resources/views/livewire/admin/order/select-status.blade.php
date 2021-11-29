@@ -1,5 +1,5 @@
 <div class="mr-2 align-middle select-none transition duration-200 ease-in"  >
-    <select name="status" id="status"  wire:model="status" class="select2 p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500" >
+    <select name="status" id="status"  wire:model="status" class="select2 p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500" >
         <option class="bg-green-500 text-white " value='{{App\Models\ORDER::STATUS_PENDING}}'>{{ __('Pending') }}</option>
         <option class="bg-blue-500 text-white " value='{{App\Models\ORDER::STATUS_PROCESSING}}'>{{ __('Processing') }}</option>
     

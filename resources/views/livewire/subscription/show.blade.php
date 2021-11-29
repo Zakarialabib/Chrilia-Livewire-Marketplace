@@ -6,7 +6,7 @@
         <div class="card-header-container flex flex-wrap">
             <div class="inline-flex">
                 <button
-                    class="btn rounded-md mb-4 md:text-sm sm:text-xs font-medium border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300"
+                    class="md:text-sm sm:text-xs bg-blue-900 text-white hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300 text-sm font-bold uppercase px-6 py-2 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                     type="button" wire:click.prevent="updateSubscriptions">
                     {{ __('Sync Subscriptions') }}
                 </button>
@@ -16,10 +16,10 @@
             <thead>
                 <tr class="text-left border-b bg-gray-100 border-gray-300">
                     <th class="px-4 py-3">
-                        {{ __('Subscription Name') }}
+                        {{ __('Subscription name') }}
                     </th>
                     <th class="px-4 py-3">
-                        {{ __('Subscription Details') }}
+                        {{ __('Subscription details') }}
                     </th>
                     <th class="px-4 py-3">
                         {{ __('Price') }}
@@ -36,7 +36,7 @@
                         </td>
                         <td class="px-4 py-3">
                             <input
-                                class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500"
+                                class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"
                                 type="number" name="subscription-{{ $key }}-price"
                                 id="subscription-{{ $key }}-price"
                                 wire:model="subscriptions.{{ $key }}.pivot.price" min="0">

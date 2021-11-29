@@ -1,4 +1,4 @@
-<section class="text-gray-600 body-font relative px-4 py-10 mx-auto bg-white" id="contact">
+<section class="text-gray-900 body-font relative px-4 py-10 mx-auto bg-white" id="contact">
     <div class="flex flex-col text-center w-full mb-12">
         <h1
             class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl tracking-tighter font-extrabold text-center text-blue-900">
@@ -17,7 +17,7 @@
                             <div class="relative">
                                 <input type="text" wire:model="name" id="name" name="name"
                                     placeholder="{{ __('Full Name') }}" value="{{ old('name') }}"
-                                    class="@error('name') is-invalid @enderror w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    class="@error('name') is-invalid @enderror w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 <x-input-error for="name" />
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                             <div class="relative">
                                 <input type="email" wire:model="email" id="email" name="email"
                                     placeholder="{{ __('Enter valid Email') }}" value="{{ old('email') }}"
-                                    class="@error('email') is-invalid @enderror w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    class="@error('email') is-invalid @enderror w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 <x-input-error for="email" />
                             </div>
                         </div>
@@ -34,14 +34,14 @@
                                 <input type="text" wire:model="phone_number" id="phone_number" name="phone_number"
                                     placeholder="{{ __('Enter your Phone Number') }}"
                                     value="{{ old('phone_number') }}"
-                                    class="@error('phone_number') is-invalid @enderror w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    class="@error('phone_number') is-invalid @enderror w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 <x-input-error for="phone_number" />
                             </div>
                         </div>
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <select id="subject" wire:model="subject" name="subject"
-                                    class="@error('subject') is-invalid @enderror w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    class="@error('subject') is-invalid @enderror w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     <option>{{ __('Select Subject Options') }}</option>
                                     <option value="Information">{{ __('Information') }}</option>
                                     <option value="Registration">{{ __('Registration') }}</option>
@@ -56,14 +56,14 @@
                             <div class="relative">
                                 <textarea id="message" wire:model="message" name="message" placeholder="Message"
                                     value="{{ old('message') }}"
-                                    class="w-full h-56 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                    class="w-full h-56 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                 <x-input-error for="subject" />
                             </div>
                         </div>
                     </div>
                     <div class="p-2 w-full">
                         <button
-                            class="flex mx-auto btn rounded-md mb-4 md:text-sm sm:text-xs font-medium border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300">
+                            class="md:text-sm sm:text-xs bg-blue-900 text-white hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300 text-sm font-bold uppercase px-6 py-2 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
                             <span>
                                 <div wire:loading wire:target="submit">
                                     <x-loading />
@@ -76,7 +76,7 @@
             </form>
         </div>
         
-        <div class="xl:w-1/3 sm:w-full px-8 bg-blue-900 rounded-2xl">
+        <div class="xl:w-1/4 sm:w-full ml-8 px-8 bg-blue-900 rounded-2xl">
             <div class="flex flex-col text-white text-center">
                 <h1 class="font-bold uppercase text-4xl my-4">{{ __('Drop in our office') }}</h1>
 

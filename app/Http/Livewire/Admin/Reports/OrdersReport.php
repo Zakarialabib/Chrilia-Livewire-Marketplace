@@ -112,7 +112,6 @@ class OrdersReport extends Component
         return(new OrdersReportExport($this->selected))->download('orders.xls');
     }
     
-
     public function generateReport() {
         $this->validate();
         $this->render();

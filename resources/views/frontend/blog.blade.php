@@ -5,8 +5,8 @@
         <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
             <div class="header flex items-end justify-between mb-12">
                 <div class="title">
-                    <p class="text-2xl font-light text-gray-400">
-                        All article are verified by 2 experts and valdiate by the CTO
+                    <p class="text-2xl font-light text-gray-400 text-center">
+                        {{__('Latest articles')}}
                     </p>
                 </div>
             </div>

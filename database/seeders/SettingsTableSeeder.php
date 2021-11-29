@@ -92,14 +92,6 @@ class SettingsTableSeeder extends Seeder
             'value' =>  '',
         ],
         [
-            'key' =>  'orderTracking',
-            'value' =>  '1',
-        ],
-        [
-            'key' =>  'enableSMS',
-            'value' =>  '1',
-        ],
-        [
             'key' =>  'enableRegistrationTerms',
             'value' =>  '1',
         ],

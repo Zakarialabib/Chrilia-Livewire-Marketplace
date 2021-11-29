@@ -25,7 +25,7 @@
                         <div class="flex pt-8">
                             @if ($s1->link == !null)
                                 <button
-                                    class="px-4 py-3 rounded-md uppercase font-medium border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300">
+                                    class="px-4 py-3 rounded-md uppercase font-medium border-0 focus:outline-none focus:ring transition bg-blue-600 text-white hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300">
                                     <a href="{{ $s1->link }}">
                                         {{ $s1->label }}
                                     </a>
@@ -69,7 +69,7 @@
                             </p>
                             @if ($s2->link == !null)
                                 <button
-                                    class="px-4 py-3 rounded-md uppercase font-medium border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300">
+                                    class="px-4 py-3 rounded-md uppercase font-medium border-0 focus:outline-none focus:ring transition bg-blue-600 text-white hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300">
                                     <a href="{{ $s2->link }}">
                                         {{ $s2->label }}
                                     </a>
@@ -110,7 +110,7 @@
                     <div class="flex justify-center items-center py-3">
 
                         <button
-                            class="px-4 py-3 rounded-md uppercase font-medium border-0 focus:outline-none focus:ring transition bg-purple-600 text-white hover:text-purple-800 hover:bg-purple-100 active:bg-purple-200 focus:ring-purple-300">
+                            class="px-4 py-3 rounded-md uppercase font-medium border-0 focus:outline-none focus:ring transition bg-blue-600 text-white hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300">
                             <a href="{{ $s3->link }}">
                                 {{ $s3->label }}
                             </a>
@@ -120,13 +120,7 @@
         </section>
     @endif
 
-    {{-- @include('components.home.our-services') --}}
-
-    @if (config('settings.orderTracking') == 1)
-
-        <livewire:front.track-order />
-
-    @endif
+    @include('components.home.our-services')
 
     <livewire:front.contact-form />
 

@@ -1,5 +1,5 @@
 <div class="relative inline-block w-60 mr-2 align-middle select-none transition duration-200 ease-in">
-    <select name="{{$name}}" id="{{$id}}" @if($checked) checked @endif {{ $attributes->merge(['class'=>"form-select p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500"])}}/>
+    <select name="{{$name}}" id="{{$id}}" @if($checked) checked @endif {{ $attributes->merge(['class'=>"form-select p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"])}}/>
         <option name="{{$name}}" value='{{App\Models\ORDER::STATUS_PENDING}}'>{{ __('Pending') }}</option>
         <option name="{{$name}}" value='{{App\Models\ORDER::STATUS_PROCESSING}}'>{{ __('Processing') }}</option>
         <option name="{{$name}}" value='{{App\Models\ORDER::STATUS_COLLECTING}}'>{{ __('Collecting') }}</option>

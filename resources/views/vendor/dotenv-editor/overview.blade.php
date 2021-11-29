@@ -129,7 +129,7 @@ All needed files are included within this file, so nothing could break if you ex
               <strong>{!! trans('dotenv-editor::views.overview_edit_modal_key') !!}:</strong> @{{ toEdit.key }}<br><br>
               <div class="form-group">
                 <label for="editvalue">{!! trans('dotenv-editor::views.overview_edit_modal_value') !!}</label>
-                <input type="text" v-model="toEdit.value" id="editvalue" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500">
+                <input type="text" v-model="toEdit.value" id="editvalue" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500">
               </div>
             </div>
             <div class="modal-footer">
@@ -160,11 +160,11 @@ All needed files are included within this file, so nothing could break if you ex
           <form @submit.prevent="addNew()">
             <div class="form-group">
               <label for="newkey">{!! trans('dotenv-editor::views.addnew_label_key') !!}</label>
-              <input type="text" name="newkey" id="newkey" v-model="newEntry.key" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500">
+              <input type="text" name="newkey" id="newkey" v-model="newEntry.key" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500">
             </div>
             <div class="form-group">
               <label for="newvalue">{!! trans('dotenv-editor::views.addnew_label_value') !!}</label>
-              <input type="text" name="newvalue" id="newvalue" v-model="newEntry.value" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-purple-500">
+              <input type="text" name="newvalue" id="newvalue" v-model="newEntry.value" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500">
             </div>
             <button class="btn btn-default" type="submit">
               {!! trans('dotenv-editor::views.addnew_button_add') !!}

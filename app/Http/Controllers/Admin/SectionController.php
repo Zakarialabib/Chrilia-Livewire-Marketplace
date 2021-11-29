@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Traits\UploadAble;
 use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Http\Controllers\Controller;

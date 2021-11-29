@@ -21,8 +21,6 @@ class CreateUsersTable extends Migration
             $table->text('company_name')->nullable();
             $table->string('banner_image')->nullable();
             $table->text('address')->nullable();
-            $table->text('bank_name')->nullable();
-            $table->text('rib_number')->nullable();
             $table->text('whatsapp_number')->nullable();
             $table->text('telegram_link')->nullable();
             $table->integer('status')->default(1);

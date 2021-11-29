@@ -2,7 +2,7 @@
     <div class="flex flex-wrap justify-center">
         <div class="lg:w-1/2 md:w-1/2 sm:w-full flex flex-wrap my-md-0 my-2">
             <select wire:model="perPage"
-                class="w-20 block p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm focus:shadow-outline-blue focus:border-purple-300 mr-3">
+                class="w-20 block p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm focus:shadow-outline-blue focus:border-blue-300 mr-3">
                 @foreach ($paginationOptions as $value)
                     <option value="{{ $value }}">{{ $value }}</option>
                 @endforeach
@@ -10,13 +10,18 @@
 
             {{-- @can('client_product_management') --}}
             <button
-                class="text-purple-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-purple-500 dark:border-gray-300 hover:text-purple-700  active:bg-purple-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
-                type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled"
-                {{ $this->selectedCount ? '' : 'disabled' }}>
-                <x-heroicon-o-trash class="h-4 w-4" />
+                class="text-blue-500 dark:text-gray-300 bg-transparent dark:bg-dark-eval-2 border border-blue-500 dark:border-gray-300 hover:text-blue-700  active:bg-blue-600 font-bold uppercase text-xs p-3 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
+                type="button" wire:click="$toggle('showDeleteModal')" wire:loading.attr="disabled">
+                <x-heroicon-o-trash class="h-3 w-3" />
             </button>
             {{-- @endcan --}}
         </div>
+        <div class="lg:w-1/2 md:w-1/2 sm:w-full my-2 my-md-0">
+            <div class="">
+                <input type="text" wire:model.debounce.300ms="search" class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"
+                    placeholder="{{ __('Search') }}" />
+            </div>
+        </div> 
     </div>
     <div wire:loading.delay>
         Loading...
@@ -28,20 +33,22 @@
             <x-table.th>
                 {{ __('Code') }}
             </x-table.th>
-            <x-table.th>
+            <x-table.th sortable wire:click="sortBy('name')" :direction="$sorts['name'] ?? null">
                 {{ __('Name') }}
+                @include('components.table.sort', ['field' => 'name'])
             </x-table.th>
-            <x-table.th>
+            <x-table.th sortable wire:click="sortBy('stock')" :direction="$sorts['stock'] ?? null">
                 {{ __('Stock') }}
+                @include('components.table.sort', ['field' => 'stock'])
             </x-table.th>
             <x-table.th>
-                {{ __('Status') }}
+                {{ __('Category') }}
             </x-table.th>
             <x-table.th>
-                {{ __('Price') }} / {{ __('Wholesale') }}
+                {{ __('Price') }} / {{ __('Wholesale Price') }}
             </x-table.th>
             <x-table.th>
-                Actions
+                {{ __('Actions') }}
             </x-table.th>
             </tr>
         </x-slot>
@@ -54,14 +61,25 @@
                     <x-table.td>
                         {{ $product->code }}
                     </x-table.td>
-                    <x-table.td>
+                    <x-table.td >
                         {{ $product->name }}
                     </x-table.td>
-                    <x-table.td>
+                    <x-table.td >
                         <livewire:toggle-button :model="$product" field="stock" key="{{ $product->id }}" />
                     </x-table.td>
                     <x-table.td>
-                        <livewire:toggle-button :model="$product" field="status" key="{{ $product->id }}" />
+                        @switch($product->category)
+                            @case(\App\Models\Product::CAT_NEW)
+                            <span class="badge text-white bg-blue-500">{{__('New')}}</span>
+                                @break
+                            @case(\App\Models\Product::CAT_HOT)
+                            <span class="badge text-white bg-orange-500">{{__('Hot')}}</span>
+                                @break
+                            @case(\App\Models\Product::CAT_SALE)
+                            <span class="badge text-white bg-red-500">{{__('Sale')}}</span>
+                                @break
+                            @default
+                        @endswitch
                     </x-table.td>
 
                     <x-table.td>
@@ -80,6 +98,10 @@
                                 class="flex items-center space-x-2">
                                 <x-heroicon-o-pencil-alt class="h-4 w-4" />
                             </a>
+                            <button class="btn btn-sm text-white bg-red-500 border-red-800 hover:bg-red-600 active:bg-red-700 focus:ring-red-300" type="button"
+                            wire:click="confirm('delete', {{ $product->id }})" wire:loading.attr="disabled">
+                            <x-heroicon-o-trash class="h-4 w-4" />
+                            </button>
                             {{-- @endcan --}}
                         </div>
                     </x-table.td>
@@ -107,6 +129,30 @@
             {{ $products->links() }}
         </div>
     </div>
+
+<!-- Delete Products Modal -->
+<form wire:submit.prevent="deleteSelected">
+    <x-modal.confirmation wire:model.defer="showDeleteModal">
+        <x-slot name="title">{{ __('Delete selected Products') }}</x-slot>
+
+        <x-slot name="content">
+            <div class="py-8 text-cool-gray-700">{{ __('Are you sure you? This action is irreversible.') }}</div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <button type="button"
+                class="btn border-gray-300 text-gray-700 dark:text-gray-300 active:bg-gray-50 active:text-gray-800 hover:text-gray-500 dark:active:bg-dark-eval-1 dark:active:text-gray-300 dark:hover:text-gray-700"
+                wire:click="$set('showDeleteModal', false)">
+                {{ __('Go back') }}
+            </button>
+
+            <button type="button"
+                class="btn text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 border-indigo-600"
+                type="submit">{{ __('Delete') }}</button>
+        </x-slot>
+    </x-modal.confirmation>
+</form>
+
 </div>
 
 @push('scripts')

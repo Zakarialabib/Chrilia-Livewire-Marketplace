@@ -29,7 +29,7 @@ class ProductFactory extends Factory
             'wholesale_price' =>20,
             'status' =>1,
             'stock'=>1,
-            'vendor_id'=>4,
+            'vendor_id'=>3,
         ];
     }
 }

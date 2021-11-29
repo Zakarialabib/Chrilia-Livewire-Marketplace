@@ -23,6 +23,8 @@ class Index extends Component
 
     public string $search = '';
 
+    public $showDeleteModal = false;
+
     public array $selected = [];
 
     public array $paginationOptions;
@@ -70,11 +72,14 @@ class Index extends Component
 
     public function render()
     {
-        $query = Auth::user()->products()->advancedFilter([
-            's'               => $this->search ?: null,
-            'order_column'    => $this->sortBy,
-            'order_direction' => $this->sortDirection,
-        ]);
+        $query = Auth::user()->products()
+                            ->where('name', 'like', '%'.$this->search.'%')
+                            ->where('code', 'like', '%'.$this->search.'%')
+                            ->advancedFilter([
+                                's'               => $this->search ?: null,
+                                'order_column'    => $this->sortBy,
+                                'order_direction' => $this->sortDirection,
+                            ]);
 
         $products = $query->paginate($this->perPage);
 
@@ -83,16 +88,18 @@ class Index extends Component
 
     public function deleteSelected()
     {
-        abort_if(Gate::denies('client_product_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('vendor_product_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         Product::whereIn('id', $this->selected)->delete();
-
+        
+        $this->showDeleteModal = false;
+        
         $this->resetSelected();
     }
 
     public function delete(Product $product)
     {
-        abort_if(Gate::denies('client_product_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('vendor_product_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $product->delete();
     }

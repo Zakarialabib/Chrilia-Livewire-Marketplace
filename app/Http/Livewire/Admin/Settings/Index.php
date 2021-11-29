@@ -14,8 +14,8 @@ class Index extends Component
 
     public $company_name, $site_title, $logoFile, $iconFile, $favicon, $siteImage,
     $company_email_address, $company_phone, $company_address, $social_facebook, $social_twitter, 
-    $social_instagram, $social_linkedin, $social_whatsapp, $head_tags ,$body_tags, $orderTracking, 
-    $seo_meta_title, $seo_meta_description, $footer_copyright_text, $enableSMS, $enableRegistrationTerms,
+    $social_instagram, $social_linkedin, $social_whatsapp, $head_tags ,$body_tags,
+    $seo_meta_title, $seo_meta_description, $footer_copyright_text, $enableRegistrationTerms,
     $currency_code, $currency_symbol;
 
     protected $listeners = ['save', 'uploadFavicon', 'uploadLogo'];
@@ -39,8 +39,6 @@ class Index extends Component
         $this->seo_meta_title  = Config::get('settings.seo_meta_title');
         $this->seo_meta_description  = Config::get('settings.seo_meta_description');
         $this->footer_copyright_text = Config::get('settings.footer_copyright_text');
-        $this->orderTracking = (bool) Config::get('settings.orderTracking');
-        $this->enableSMS = (bool) Config::get('settings.enableSMS');
         $this->enableRegistrationTerms = (bool) Config::get('settings.enableRegistrationTerms');
         $this->currency_code  = Config::get('settings.currency_code');
         $this->currency_symbol  = Config::get('settings.currency_symbol');
@@ -65,8 +63,6 @@ class Index extends Component
             'seo_meta_title' => $this->seo_meta_title,
             'seo_meta_description' => $this->seo_meta_description,
             'footer_copyright_text' => $this->footer_copyright_text,
-            'orderTracking' => $this->orderTracking,
-            'enableSMS' => $this->enableSMS,
             'enableRegistrationTerms' => $this->enableRegistrationTerms,
             'currency_code' => $this->currency_code,
             'currency_symbol' => $this->currency_symbol,
