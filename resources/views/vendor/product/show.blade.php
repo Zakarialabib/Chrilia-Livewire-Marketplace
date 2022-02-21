@@ -43,16 +43,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ __('Image') }}
+                            {{ __('Video') }}
                         </th>
                         <td>
-                            @if ($product->image != null)
-                            <img alt="{{ $product->name }}" src="{{ asset('uploads/' . $product->image) }}"
-                                class="w-full object-cover" />
-                        @else
-                            <img src="https://via.placeholder.com/250x200?text=Placeholder+Image" id="logoImg"
-                                alt="{{ $product->name }}" class="max-h-40 w-full object-cover" />
-                        @endif
+                           {!! $product->embed_video !!}
                         </td>
                     </tr>
                     <tr>

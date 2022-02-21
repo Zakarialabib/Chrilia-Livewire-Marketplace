@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use Illuminate\Notifications\Notifiable;
 use App\Support\HasAdvancedFilter;
 use App\Models\UserAlert;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Viewable
 {
+    use InteractsWithViews;
     use HasFactory;
     use Notifiable;
     use HasAdvancedFilter;

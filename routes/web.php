@@ -27,6 +27,18 @@ Route::get('/page/{slug}', [HomePageController::class, 'show'])->name('page.show
 
 Route::get('/store/{company_name}', [HomeVendorController::class, 'show'])->name('store.show');
 
+Route::get('/product/{product}', [HomeVendorController::class, 'show'])->name('product.show');
+
+Route::get('/products', [HomeController::class, 'products'])->name('home.products');
+
+Route::get('/brands', [HomeController::class, 'brands'])->name('brands');
+
+Route::get('/brand/{brand_slug}', [HomeController::class, 'brandDetail'])->name('brand.show');
+
+Route::get('/phone/{slug}', [HomeController::class, 'phoneDetail'])->name('phone.show');
+
+Route::get('/phonesearch', [HomeController::class, 'phoneSearch'])->name('phone.search');
+
 Route::get('/blog', [HomePostController::class, 'index'])->name('blog.index');
 
 Route::get('/blog/{slug}', [HomePostController::class, 'show'])->name('blog.show');

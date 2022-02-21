@@ -9,9 +9,9 @@
                 @endforeach
             </select>
 
-            <x-select-list wire:model="vendor_id" id="vendor_id" name="vendor_id" :options="$this->listsForFields['vendors']"
+            {{-- <x-select-list wire:model="vendor_id" id="vendor_id" name="vendor_id" :options="$this->listsForFields['vendors']"
                 class="w-20 block p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm focus:shadow-outline-blue focus:border-blue-300 mx-2" />
-                
+                 --}}
             <select wire:model="category" name="category" id="category"
                 class="w-32 p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm focus:shadow-outline-blue focus:border-blue-300 mx-2">
                 <option value="">{{ __('Category') }}</option>

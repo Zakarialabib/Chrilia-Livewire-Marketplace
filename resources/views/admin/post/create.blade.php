@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="p-4">
-        @livewire('admin.section.create')
+        @livewire('admin.posts.create')
     </div>
 </div>
 @endsection

@@ -15,7 +15,7 @@
             </div>
             <div class="w-1/4 p-2 mb-4">
                 <x-label for="position" :value="__('Position')" required />
-                <input name="" id="" wire:model="section.position" disabled
+                <input name="position" id="position" wire:model="section.position" disabled
                         class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500" >
                     
                 <x-input-error for="section.position" />

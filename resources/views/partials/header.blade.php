@@ -1,7 +1,8 @@
-<nav class="flex items-center border-b-2 px-3 flex-wrap bt-5 bg-indigo-600">
+<nav class="flex items-center border-b-2 px-3 flex-wrap bt-5 bg-black">
     <div class="p-2 mr-4 inline-flex items-center">
-        <a class="no-underline hover:text-blue-200 hover:no-underline" href="#">
-            <x-application-logo class="block h-12 w-auto" />
+        <a class="no-underline hover:text-blue-200 hover:no-underline" href="/">
+            <img src="{{ asset('uploads/' . config('settings.site_logo')) }}"
+            class="block h-12 w-10/12">
         </a>
     </div>
     <div class="inline-flex p-3 rounded lg:hidden ml-auto outline-none nav-toggler">
@@ -14,14 +15,14 @@
    
     <div class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto" id="nav-content">
         <ul
-            class="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto">
+            class="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto lg:p-5">
             <li class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-center items-center justify-center">
                 <a class="text-white no-underline hover:text-blue-200 hover:text-underline"
                     href="{{ route('home') }}">{{ __('Home') }}</a>
             </li>
             <li class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-center items-center justify-center">
                 <a class="text-white no-underline hover:text-blue-200 hover:text-underline"
-                    href="{{ route('page.index') }}">{{ __('Pages') }}</a>
+                    href="{{ route('brands') }}">{{ __('Brands') }}</a>
             </li>
             <li class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-center items-center justify-center">
                 <a class="text-white no-underline hover:text-blue-200 hover:text-underline"
@@ -90,7 +91,7 @@
                     onclick="openDropdown(event,'language-dropdown')" aria-haspopup="true"
                     :aria-expanded="open ? 'true' : 'false'">
                     <img src="{{ flagImageUrl(\Illuminate\Support\Facades\App::getLocale()) }}"
-                        class="px-2">
+                        class="px-2 drop-shadow-xl shadow-lg border-white" lazy>
                     @if (count($languages) > 1)
                         <x-heroicon-o-chevron-down class="flex-shrink-0 w-4 h-4" aria-hidden="true" />
                     @endif

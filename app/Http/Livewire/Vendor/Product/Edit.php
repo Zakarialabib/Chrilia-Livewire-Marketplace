@@ -12,7 +12,7 @@ class Edit extends Component
 
     public Product $product;
 
-    public $image ;
+    // public $image ;
     
     protected $listeners = [
         'submit',
@@ -36,17 +36,27 @@ class Edit extends Component
     'product.category'      => 'nullable',
     'product.price'       => 'required|numeric',
     'product.wholesale_price'       => 'numeric',
+    // 'product.image' => 'nullable',
+    'product.embed_video' => 'nullable',
     ];
 
     public function submit()
     {
-        
-        if($this->image == NULL){
-            $filename = $this->image->store("/");
-            $this->product->image = $filename;
-        }
-        
+        $this->validate();
 
+        // if (isset($this->image) && $this->image != null){
+        // $filename = $filename->getRealPath();
+        // }
+
+        // if( $this->image ){
+
+        //     $this->product->clearMediaCollection("products");
+        //     // dd($this->image);
+        //     $this->product->addMedia( $this->image )->toMediaCollection("products");
+        //     $this->image = null;
+
+        // }
+                
         $this->product->update();
 
         $this->alert('success', __('Product updated successfully!') );

@@ -59,7 +59,6 @@ class Dashboard extends Component
         return view('livewire.admin.dashboard')
         ->with([
             "usersChart" => $this->usersChart(),
-            "productsChart" => $this->productsChart(),
         ]);
     }
 

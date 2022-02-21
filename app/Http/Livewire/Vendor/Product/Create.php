@@ -13,7 +13,7 @@ class Create extends Component
 
     public Product $product;  
     
-    public $image ;
+    // public $image ;
     
     protected $listeners = [
         'submit',
@@ -33,10 +33,10 @@ class Create extends Component
     {
         $this->validate();
         
-        if($this->image){
-            $filename = $this->image->store("/");
-        }
-        $this->product->image = $filename;
+        // if($this->image){
+        //     $filename = $this->image->store("/");
+        // }
+        // $this->product->image = $filename;
         // dd($this->product);
         
         $this->product->status = 1;
@@ -71,6 +71,10 @@ class Create extends Component
             'product.price' => [
                 'numeric',
                 'required',
+            ],
+            'product.embed_video' => [
+                'nullable',
+                'string',
             ],
             'product.wholesale_price' => [
                 'numeric',

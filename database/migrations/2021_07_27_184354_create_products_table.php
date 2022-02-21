@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('name');
+            $table->text('embed_video')->nullable();
             $table->string('image')->nullable();
             $table->decimal('price', 10,0);
             $table->decimal('wholesale_price', 10,0)->nullable();

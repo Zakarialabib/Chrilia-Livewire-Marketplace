@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
-use App\Support\HasAdvancedFilter;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Support\Helper;
+use App\Support\HasAdvancedFilter;
+use Illuminate\Database\Eloquent\Model;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Product extends Model
+class Product extends Model implements Viewable , HasMedia
 {
-    use HasFactory;
-    use HasAdvancedFilter;
+    use InteractsWithViews, InteractsWithMedia, 
+        HasFactory, HasAdvancedFilter;
 
     public $table = 'products';
 
@@ -62,6 +66,7 @@ class Product extends Model
         'status',
         'wholesale_price',
         'image',
+        'embed_video',
         'vendor_id',
         'admin_id',
         'description',
@@ -75,5 +80,12 @@ class Product extends Model
     public function vendor()
     {
         return $this->belongsTo(User::class, 'vendor_id', 'id');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('products')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/gif']);
     }
 }

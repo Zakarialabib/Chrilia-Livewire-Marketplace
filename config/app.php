@@ -170,6 +170,7 @@ return [
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class, 
+        CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
         
         /*
          * Application Service Providers...

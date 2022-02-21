@@ -48,9 +48,9 @@ class Create extends Component
 
         if(!empty($this->image)){
             $filename = $this->image->store("/");
+            $this->section->image = $filename;
         }
             
-        $this->section->image = $filename;
 
         $this->section->save();
 

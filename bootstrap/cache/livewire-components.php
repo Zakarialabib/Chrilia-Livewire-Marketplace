@@ -30,6 +30,8 @@
   'client.products' => 'App\\Http\\Livewire\\Client\\Products',
   'front.contact-form' => 'App\\Http\\Livewire\\Front\\ContactForm',
   'front.market' => 'App\\Http\\Livewire\\Front\\Market',
+  'front.products' => 'App\\Http\\Livewire\\Front\\Products',
+  'front.show-modal' => 'App\\Http\\Livewire\\Front\\ShowModal',
   'modal' => 'App\\Http\\Livewire\\Modal',
   'notifications' => 'App\\Http\\Livewire\\Notifications',
   'permission.create' => 'App\\Http\\Livewire\\Permission\\Create',

@@ -20,12 +20,15 @@ class HomeController extends Controller
     {
 
         abort_if(Gate::denies('admin_dashboard'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
+        $product_views = views(Product::class)->count();
+        $vendor_views = views(User::class)->count();
 
         $orders_data = Order::with("orders")->count();
         $products_data = Product::with("products")->count();
         $users_data = User::with("users")->count();
                 
-        return view('admin.home', compact( 'orders_data','products_data','users_data'));
+        return view('admin.home', compact( 'orders_data','products_data','users_data','product_views','vendor_views'));
     }
 
     public function translations()

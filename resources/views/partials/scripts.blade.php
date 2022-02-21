@@ -1,7 +1,6 @@
 
     @livewireScripts
 
-    
     <!-- Jquery -->
     <script type="text/javascript"  src="{{ asset('assets/js/jquery.min.js') }}"></script>
     

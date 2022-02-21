@@ -1,7 +1,7 @@
 <div class="lg:w-1/2 md:w-1/2 sm:w-full flex flex-wrap my-md-0 my-2">
     <select wire:model="category" name="category" id="category"
         class="w-32 p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm focus:shadow-outline-blue focus:border-blue-300 mr-3">
-        <option value="">{{ __('Select Category') }}</option>
+        <option value="">{{ __('Category') }}</option>
         <option value='{{ App\Models\Product::CAT_HOT }}'>{{ __('Hot') }}</option>
         <option value='{{ App\Models\Product::CAT_NEW }}'>{{ __('New') }}</option>
         <option value='{{ App\Models\Product::CAT_SALE }}'>{{ __('Sale') }}</option>

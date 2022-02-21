@@ -12,6 +12,8 @@ class VendorController extends Controller
     
     public int $perPage;
 
+    public $show;
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -38,8 +40,21 @@ class VendorController extends Controller
             'order_direction' => $this->sortDirection,
             ])
             ->paginate($this->perPage);
+        
+        views($vendor)->record();
 
-        return view('frontend.vendor-page', compact('vendor', 'products'));
+        $vendor_views = views($vendor)->unique()->count();
+        
+        return view('frontend.vendor-page', compact('vendor', 'products', 'vendor_views'));
+
+    }
+    public function showModal(Product $product)
+    {
+        views($product)->record();
+
+        $product_views = views($product)->unique()->count();
+
+        return view('frontend.show-product',compact('product','product_views'));
 
     }
 }

@@ -50,10 +50,10 @@ class Edit extends Component
     {
         $this->validate();
 
-        $filename = $this->image->store('/');
-
-        $this->section->image = $filename;
-        
+        if($this->image == null){
+            $filename = $this->image->store('/');
+            $this->section->image = $filename;
+        }
         $this->section->update();
         
         $this->alert('success', __('Section updated successfully!') );

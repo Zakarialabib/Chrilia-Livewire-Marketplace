@@ -48,12 +48,12 @@
             </div>
         </div>
 
-        <div class="mb-4 p-2 {{ $errors->has('image') ? 'is-invalid' : '' }}">
-            <x-label for="image" :value="__('Image')" />
-            <input
+        <div class="mb-4 p-2 ">
+            <x-label for="product.embed_video" :value="__('Embed video')" />
+            <input type="text"
                 class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"
-                type="file" name="image" id="image" wire:model.defer="image">
-            <x-input-error for="image" />
+                id="product.embed_video" wire:model="product.embed_video">
+            <x-input-error for="product.embed_video" />
         </div>
 
         <div class="mb-4 p-2 {{ $errors->has('product.description') ? 'is-invalid' : '' }}">
