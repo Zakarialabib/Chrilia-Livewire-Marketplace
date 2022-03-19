@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'asset_url'  => '/marketplace-app/public',
+    'asset_base_url' => '/assets',
 
     /*
     |--------------------------------------------------------------------------

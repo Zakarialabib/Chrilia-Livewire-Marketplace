@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Models\Contact; 
 use App\Models\Section; 
 use App\Models\Brand; 
+use App\Models\Phone; 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -22,24 +23,47 @@ class HomeController extends Controller
     public function brands()
     {
         $data = Http::get('https://api-mobilespecs.azharimm.site/v2/brands')->json();
-        
-        return view('frontend.brands', ['data' => $data]);
+        $brands = Brand::all();
+        foreach ($data['data'] as $item){
+            $brand_name = $item['brand_name'];
+            $device_count = $item['device_count'];
+            $brand_slug = $item['brand_slug'];
+        }
+
+        $brand = Brand::create([
+            'name' => $brand_name,
+            'brand_slug' => $brand_slug,
+            'device_count'=> $device_count,
+            ], $data); 
+        $brand->save();
+
+
+        return view('frontend.brands', ['data' => $data,
+        'brands' => $brands,                                
+        'brand' => $brand
+                                        ]);
     }
 
     public function brandDetail($brand_slug)
     {
-        $page = 1;
-        
-        if(request()->has('page'))
-            $page = request()->input('page');
 
-        $data = Http::get("https://api-mobilespecs.azharimm.site/v2/brands/$brand_slug?page=$page")->json();
-
-        // $paginator = new LengthAwarePaginator(
-        //     // $data->count(), $page
-        // );
-
-        return view('frontend.single-brand', compact('data','brand_slug','page'));
+        $data = Http::get("https://api-mobilespecs.azharimm.site/v2/brands/$brand_slug?page=1")->json();
+        foreach ($data['data']['phones'] as $item){
+            $brand = $item['brand'];
+            $phone_name = $item['phone_name'];
+            $slug = $item['slug'];
+            $image = $item['image'];
+            
+            $phone = Phone::create([
+                 'brand' => $brand ,
+                'phone_name'=> $phone_name,
+                'slug' => $slug ,
+                 'image' => $image ,
+                ], $data); 
+            $phone->save();
+        }
+        return view('frontend.single-brand'
+        , compact('data','brand_slug'));
     }
 
     public function phoneDetail($slug)
@@ -47,8 +71,9 @@ class HomeController extends Controller
         $data = Http::get("https://api-mobilespecs.azharimm.site/v2/$slug")->json();        
         
         // dd($data);
+        $phone = Phone::where('slug', $slug)->first();
 
-        return view('frontend.single-phone', compact('data','slug'));
+        return view('frontend.single-phone', compact('data','slug','phone'));
     }
 
     public function phoneSearch($query)

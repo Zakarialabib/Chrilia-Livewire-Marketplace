@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\PhoneController;
+
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'role:ADMIN']], function () {
@@ -40,6 +43,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
 
     // Pages
     Route::resource('pages', PageController::class, ['except' => ['store', 'update', 'destroy']]);
+
+    // Brands
+    Route::resource('brands', BrandController::class, ['except' => ['store', 'update', 'destroy']]);
+    Route::get('phones/{brand_slug}', [PhoneController::class, 'brandDetail'])->name('brands.detail');
+
+    // Phones
+    Route::resource('phones', PhoneController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Posts
     Route::resource('posts', PostController::class, ['except' => ['store', 'update', 'destroy']]);

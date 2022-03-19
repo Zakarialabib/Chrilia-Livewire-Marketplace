@@ -3,6 +3,10 @@
 @section('title', __('Home'))
 
 @section('content')
+    
+<livewire:front.phonesearch />    
+<livewire:front.imeicheck />
+    
     @php
     $sections = \App\Models\Section::where('status', 1)
         ->orderBy('position', 'desc')

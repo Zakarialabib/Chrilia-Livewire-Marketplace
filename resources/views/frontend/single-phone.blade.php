@@ -5,12 +5,13 @@
             <div class="pt-16 grid grid-cols-2 gap-8">
                 <div class="flex flex-col justify-start">
                     <div class="flex flex-col w-full object-cover justify-items-start rounded-lg overflow-hidden">
-                        <img class="w-full h-full object-cover" src="{{ $data['data']['thumbnail'] }}">
+                        <img class="w-full h-full object-cover" src="{{ $phone->image }}">
                     </div>
                 </div>
                 <div class="flex flex-col">
                     <div class="flex flex-col gap-4">
-                        <h2 class="text-4xl font-semibold leading-6 text-gray-800 capitalize">{{ $data['data']['phone_name'] }}</h2>
+                        <h2 class="text-4xl font-semibold leading-6 text-gray-800 capitalize">{{ $phone->phone_name }}</h2>
+                        <p class="">{{ $phone->brand }}</h2>
                     </div>
                 </div>
             </div>

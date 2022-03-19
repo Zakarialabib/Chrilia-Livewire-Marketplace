@@ -6,6 +6,11 @@
             <x-icons.dashboard class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
+    <x-sidebar.link title="{{ __('Brands') }}" href="{{ route('admin.brands.index') }}" :isActive="request()->routeIs('admin.brands.index')">
+        <x-slot name="icon">
+            <x-heroicon-o-truck class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
     <x-sidebar.link title="{{ __('Products') }}" href="{{ route('admin.products.index') }}" :isActive="request()->routeIs('admin.products.index')">
         <x-slot name="icon">
             <x-heroicon-o-truck class="flex-shrink-0 w-6 h-6" aria-hidden="true" />

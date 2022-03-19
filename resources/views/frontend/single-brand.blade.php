@@ -30,7 +30,7 @@
                 </div>
                 <div class="p-4">
                     <div class="pt-3">
-                        {{-- {{ $data['data']->links() }} --}}
+                        {{-- {{$data->links()}} --}}
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Vendor;
+namespace App\Http\Livewire\Client;
 
 use App\Http\Livewire\WithConfirmation;
 use Illuminate\Support\Facades\Auth;
