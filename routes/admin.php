@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\PosController;
 use App\Http\Controllers\Admin\UserAlertController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PageController;
@@ -66,6 +67,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     // Orders
     Route::resource('orders', AdminOrderController::class, ['except' => ['store', 'update', 'destroy']]);
     Route::get('order-invoice/{id}', [AdminOrderController::class, 'orderInvoice'])->name('orders.invoice');
+    
+    //POS
+    Route::get('pos', [PosController::class, 'index'])->name('pos.index');
+    Route::post('pos', [PosController::class, 'store'])->name('pos.store');
 
     // Payments
     Route::resource('payments', AdminPaymentController::class, ['except' => ['store', 'update', 'destroy']]);

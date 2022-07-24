@@ -14,7 +14,13 @@
     </div>
 
     <div class="flex items-center gap-3">
+        <div class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3">
 
+        <a href="{{ route('admin.pos.index') }}"
+                class="inline-flex items-center transition-colors font-medium select-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-eval-2 p-2 bg-white text-gray-500 hover:bg-gray-100 focus:ring-blue-500 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200 rounded-md md:inline-flex">
+                {{ __('Pos') }}
+            </a>
+        </div>
         @if (auth()->user()->isAdmin())
             <div class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3">
 

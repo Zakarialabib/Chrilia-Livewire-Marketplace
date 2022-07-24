@@ -6,10 +6,10 @@
 
         <div class="flex flex-wrap">
             <div class="lg:w-1/3 md:w-1/2 sm:w-full p-2 {{ $errors->has('product.code') ? 'is-invalid' : '' }}">
-                <x-label for="product_code" :value="__('Code')" required />
+                <x-label for="code" :value="__('Code')" required />
                 <input
                     class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"
-                    type="text" name="product_code" id="product_code" required wire:model.defer="product.code">
+                    type="text" name="code" id="code" required wire:model.defer="product.code">
                 <x-input-error for="product.code" />
             </div>
 

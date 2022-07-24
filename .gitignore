@@ -20,3 +20,4 @@ Homestead.json
 bootstrap/cache/packages.php
 bootstrap/cache/services.php
 storage/logs/laravel.log
+bootstrap/cache/livewire-components.php
