@@ -1,6 +1,6 @@
-# MarketPlace App made with Laravel Livewire - Multi Auth
+# Multi vendor Marketplace powered by TallStack
  
-Content management system made with laravel and livewire, which it's display agency portfolio, services...
+Marketplace multi users made with laravel, livewire, alpinejs &  tailwind css 
 
 ## RUN THE PROJECT
 
@@ -17,11 +17,11 @@ Username : admin1@admin.com
 
 Password : password
 
-Thanks to
+## credits to
 
 Laravel (PHP)
-
+Livewire
+Alpinejs 
 Tailwindcss (Css)
-
 Kamona-WD (Admin Dashboard)
 
