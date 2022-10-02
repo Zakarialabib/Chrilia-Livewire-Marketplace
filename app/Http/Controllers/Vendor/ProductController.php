@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Imports\ProductsImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Http;
 
 class ProductController extends Controller
 {
@@ -25,6 +26,36 @@ class ProductController extends Controller
 
         return view('vendor.product.create');
     }
+
+    public function productSync()
+    {
+        
+        $apiUrl = '127.0.0.1:8000/api/v1/';
+        $apiKey = '1otDa9wrzJZNywwbFNLaGgb7TZi9gbBV8JfMOLhRtf9hpzQAkYDH6XJXMBxL';
+
+        $data = Http::withBasicAuth('omar@taibalharamain.ma', 'password')->get( $apiUrl ."products" . $apiKey);
+        
+        // 
+        dd($data);
+        
+        // foreach ($data['data']['phones'] as $item){
+        //     $brand = $item['brand'];
+        //     $phone_name = $item['phone_name'];
+        //     $slug = $item['slug'];
+        //     $image = $item['image'];
+            
+        //     $phone = Phone::create([
+        //         'brand' => $brand ,
+        //         'phone_name'=> $phone_name,
+        //         'slug' => $slug ,
+        //         'image' => $image ,
+        //         ], $data); 
+        //     $phone->save();
+        // }
+            
+        return view('vendor.product.product-import', $data);
+    }
+
 
     public function edit(Product $product)
     {

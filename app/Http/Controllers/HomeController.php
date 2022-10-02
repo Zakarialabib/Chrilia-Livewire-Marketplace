@@ -38,11 +38,13 @@ class HomeController extends Controller
         $brand->save();
 
 
-        return view('frontend.brands', ['data' => $data,
+        return view('frontend.brands', [
+        'data' => $data,
         'brands' => $brands,                                
         'brand' => $brand
-                                        ]);
-    }
+         ]);
+    
+}
 
     public function brandDetail($brand_slug)
     {

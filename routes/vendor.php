@@ -21,6 +21,8 @@ Route::group(['prefix' => 'vendor', 'as' => 'vendor.', 'middleware' => ['auth', 
      // Products
     Route::resource('products', VendorProductController::class, ['except' => ['store', 'update', 'destroy']]);
     
+    Route::get('product-sync', [VendorProductController::class, 'productSync'])->name('product-sync');
+    
     Route::post('product-import', [VendorProductController::class, 'productImport'])->name('product-import');
     
     // User Profile
