@@ -11,7 +11,6 @@ class Brand extends Model
     
     protected $table = 'brands';
 
-
     protected $fillable = [
         'name',
         'device_count',

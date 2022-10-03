@@ -2,63 +2,64 @@
 
 namespace App\Http\Livewire\Admin\Section;
 
-use App\Models\Section;
-use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
-use Illuminate\Validation\Rule;
+use App\Models\Section;
+use App\Models\Language;
+use Livewire\Component;
+use Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Edit extends Component
 {
+    use LivewireAlert;
     use WithFileUploads;
-
+    
     public Section $section;
-
-    public $title, $image, $featured_title, $position,$bg_color,
-    $label, $link, $description, $status;
+    
+    public $image;
 
     protected $listeners = [
         'submit',
     ];
-
+    
     protected $rules = [    
-        'section.title' => 'required|min:|max:191',
-        'section.featured_title' => 'nullable',
-        'section.description' => 'nullable',
-        'section.bg_color' => 'nullable',
-        'section.label' => 'nullable',
-        'section.link' =>'nullable',
-    ];
+        'section.language_id' => 'required',
+        'section.page' => 'required',
+        'section.title' => 'nullable',
+        'section.custom_col' => 'nullable',
+        'section.custom_html_1' => 'nullable',
+        'section.custom_html_2' => 'nullable',
+        'section.custom_html_3' => 'nullable',
+        'section.content' => 'nullable',
+        'section.video' => 'nullable',
+    ]; 
+
 
     public function mount(Section $section)
     {
         $this->section = $section;
-        $this->title = $section->title;
-        $this->featured_title = $section->featured_title;
-        $this->description = $section->description;
-        $this->image = $section->image;
-        $this->bg_color = $section->bg_color;
-        $this->label = $section->label;
-        $this->link = $section->link;
-    }  
+    }
 
     public function render()
     {
         return view('livewire.admin.section.edit');
     }
+
     public function submit()
     {
         $this->validate();
-
-        if($this->image == null){
-            $filename = $this->image->store('/');
-            $this->section->image = $filename;
-        }
-        $this->section->update();
         
-        $this->alert('success', __('Section updated successfully!') );
-       
-        return redirect()->route('admin.sections.index');
+        if($this->image){
+            $imageName = Str::slug($this->section->title).'.'.$this->image->extension();
+            $this->image->storeAs('sections',$imageName);
+            $this->section->image = $imageName;
+        }
 
+        $this->section->save();
+
+        $this->alert('success', __('Section updated successfully!') );
+
+        return redirect()->route('admin.sections.index');
     }
+  
 }

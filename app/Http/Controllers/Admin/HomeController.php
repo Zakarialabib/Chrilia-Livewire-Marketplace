@@ -27,8 +27,14 @@ class HomeController extends Controller
         $orders_data = Order::with("orders")->count();
         $products_data = Product::with("products")->count();
         $users_data = User::with("users")->count();
+
+        $services = Service::where("status", true)->count();
+        $partners = Partner::where("status", true)->count();
+        $contacts = Contact::where("id", true)->count();
+
                 
-        return view('admin.home', compact( 'orders_data','products_data','users_data','product_views','vendor_views'));
+        return view('admin.home', compact( 'orders_data','products_data','users_data','product_views','vendor_views',
+                                            'services', 'partners', 'contacts'));
     }
 
     public function translations()

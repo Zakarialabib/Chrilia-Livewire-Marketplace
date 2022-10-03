@@ -2,40 +2,42 @@
 
 namespace App\Http\Livewire\Admin\Section;
 
-use App\Models\Section;
-use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
-use Illuminate\Validation\Rule;
+use App\Models\Section;
+use App\Models\Language;
+use Livewire\Component;
+use Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Create extends Component
 {
+    use LivewireAlert;
     use WithFileUploads;
     
     public Section $section;
     
-    public $title, $image, $featured_title, $postion,$bg_color,
-    $label, $link, $description, $status;
+    public $image;
 
     protected $listeners = [
         'submit',
     ];
-
+    
     protected $rules = [    
-            'section.title' => 'required|min:|max:191',
-            'section.featured_title' => 'nullable',
-            'section.position' => 'required|in:1,2,3,4',   
-            'section.description' => 'nullable',
-            'section.bg_color' => 'nullable',
-            'section.label' => 'nullable',
-            'section.link' =>'nullable',
-        ];
-
+        'section.language_id' => 'required',
+        'section.page' => 'required',
+        'section.title' => 'nullable',
+        'section.custom_col' => 'nullable',
+        'section.custom_html_1' => 'nullable',
+        'section.custom_html_2' => 'nullable',
+        'section.custom_html_3' => 'nullable',
+        'section.content' => 'nullable',
+        'section.video' => 'nullable',
+    ]; 
 
     public function mount(Section $section)
     {
         $this->section = $section;
-    }  
+    }
 
     public function render()
     {
@@ -45,12 +47,12 @@ class Create extends Component
     public function submit()
     {
         $this->validate();
-
-        if(!empty($this->image)){
-            $filename = $this->image->store("/");
-            $this->section->image = $filename;
+        
+        if($this->image){
+            $imageName = Str::slug($this->section->title).'.'.$this->image->extension();
+            $this->image->storeAs('sections',$imageName);
+            $this->section->image = $imageName;
         }
-            
 
         $this->section->save();
 
@@ -58,4 +60,5 @@ class Create extends Component
 
         return redirect()->route('admin.sections.index');
     }
+  
 }

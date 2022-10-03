@@ -74,6 +74,9 @@ class Order extends Model
         'status',
         'total',
         'payment_status',
+        'shipping',
+        'product_id',
+        'shipping_status',
     ];
 
     protected $dates = [
@@ -81,6 +84,10 @@ class Order extends Model
         'updated_at',
     ];
 
+    public function details()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
 
     public function payment()
     {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b9a2f330650205de1d4acace670ae65",
+    "content-hash": "784841cb11e1692cfb2d13ebf22a2109",
     "packages": [
         {
             "name": "asantibanez/livewire-charts",
@@ -1805,16 +1805,16 @@
         },
         {
             "name": "jantinnerezo/livewire-alert",
-            "version": "2.2.4",
+            "version": "2.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jantinnerezo/livewire-alert.git",
-                "reference": "8c133deaab8b0b6d157a082f246057426b8d83d4"
+                "reference": "352d13719741fce537893bd9372504385bc99d5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jantinnerezo/livewire-alert/zipball/8c133deaab8b0b6d157a082f246057426b8d83d4",
-                "reference": "8c133deaab8b0b6d157a082f246057426b8d83d4",
+                "url": "https://api.github.com/repos/jantinnerezo/livewire-alert/zipball/352d13719741fce537893bd9372504385bc99d5c",
+                "reference": "352d13719741fce537893bd9372504385bc99d5c",
                 "shasum": ""
             },
             "require": {
@@ -1861,7 +1861,7 @@
             ],
             "support": {
                 "issues": "https://github.com/jantinnerezo/livewire-alert/issues",
-                "source": "https://github.com/jantinnerezo/livewire-alert/tree/2.2.4"
+                "source": "https://github.com/jantinnerezo/livewire-alert/tree/2.2.6"
             },
             "funding": [
                 {
@@ -1869,7 +1869,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-02-02T07:17:53+00:00"
+            "time": "2022-03-15T17:39:01+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",

@@ -15,7 +15,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "jantinnerezo/livewire-alert": "^2.1",
+        "jantinnerezo/livewire-alert": "^2.2",
         "kkomelin/laravel-translatable-string-exporter": "^1.14",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",

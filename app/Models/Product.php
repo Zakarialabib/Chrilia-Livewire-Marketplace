@@ -62,13 +62,18 @@ class Product extends Model implements Viewable , HasMedia
         'id',
         'name',
         'price',
+        'wholesale_price',
+        'discount_price',
+        'flash_price',
+        'quantity',
         'stock',
         'status',
-        'wholesale_price',
         'image',
         'embed_video',
         'vendor_id',
         'admin_id',
+        'brand_id',
+        'category_id', 
         'description',
         'category',
     ];
@@ -80,6 +85,16 @@ class Product extends Model implements Viewable , HasMedia
     public function vendor()
     {
         return $this->belongsTo(User::class, 'vendor_id', 'id');
+    }
+
+    public function brand()
+    {
+        return $this->hasOne(Brand::class, 'brand_id', 'id');
+    }
+    
+    public function category()
+    {
+        return $this->hasMany(Category::class, 'category_id', 'id');
     }
 
     public function registerMediaCollections(): void

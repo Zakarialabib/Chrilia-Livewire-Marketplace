@@ -12,7 +12,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Modules\Sale\Entities\Sale;
 use Modules\Sale\Entities\SaleDetails;
-use Modules\Sale\Entities\SalePayment;
+use Modules\Sale\Entities\orderPayment;
 use Modules\Sale\Http\Requests\StorePosSaleRequest;
 
 class PosController extends Controller
@@ -83,7 +83,7 @@ class PosController extends Controller
             Cart::instance('sale')->destroy();
 
             if ($sale->paid_amount > 0) {
-                SalePayment::create([
+                orderPayment::create([
                     'date' => now()->format('Y-m-d'),
                     'reference' => 'INV/'.$sale->reference,
                     'amount' => $sale->paid_amount,
@@ -95,6 +95,6 @@ class PosController extends Controller
 
         toast('POS Sale Created!', 'success');
 
-        return redirect()->route('sales.index');
+        return redirect()->route('admin.orders.index');
     }
 }
