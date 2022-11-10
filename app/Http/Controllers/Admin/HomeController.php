@@ -6,11 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
-use App\Models\Order;
-use App\Models\User;
-use App\Models\Product;
-use App\Models\Language;
-use App\Models\Payment;
+use App\Models\{Order,
+                User,
+                Product,
+                Language,
+                Payment,
+                Contact,
+                Partner,
+                Service
+                };
 use Carbon\Carbon;
 use Gate, Storage;
 
@@ -28,13 +32,14 @@ class HomeController extends Controller
         $products_data = Product::with("products")->count();
         $users_data = User::with("users")->count();
 
-        $services = Service::where("status", true)->count();
-        $partners = Partner::where("status", true)->count();
-        $contacts = Contact::where("id", true)->count();
+        // $services = Service::where("status", true)->count();
+        // $partners = Partner::where("status", true)->count();
+        // $contacts = Contact::where("id", true)->count();
 
                 
         return view('admin.home', compact( 'orders_data','products_data','users_data','product_views','vendor_views',
-                                            'services', 'partners', 'contacts'));
+                                            // 'services', 'partners', 'contacts'
+                                        ));
     }
 
     public function translations()

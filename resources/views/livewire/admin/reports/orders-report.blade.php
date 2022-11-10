@@ -115,7 +115,7 @@
                         <input type="checkbox" value="{{ $order->id }}" wire:model="selected">
                     </x-table.td>
                     <x-table.td>
-                        {{ $order->created_at->format('d / m / Y') }}
+                        {{ \Carbon\Carbon::parse($order->created_at->format('d / m / Y')) }}
                     </x-table.td>
                     <x-table.td>
                         {{ $order->client->name }}

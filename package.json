@@ -11,17 +11,16 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.2.1",
-        "@tailwindcss/jit": "^0.1.18",
-        "autoprefixer": "^10.1.0",
+        "autoprefixer": "^10.4.12",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.3.5",
+        "postcss": "^8.4.17",
         "postcss-import": "^14.0.2",
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.42.1",
         "sass-loader": "^12.1.0",
-        "tailwindcss": "^2.1.4"
+        "tailwindcss": "^2.2.19"
     },
     "dependencies": {
         "@alpinejs/collapse": "^3.5.0",
@@ -32,9 +31,8 @@
         "flatpickr": "^4.6.9",
         "jquery": "^3.6.0",
         "perfect-scrollbar": "^1.5.3",
-        "select2": "*",
+        "select2": "^4.1.0-rc.0",
         "sweetalert2": "^11.1.7",
-        "tailwindcss-tables": "^0.4.0",
-        "turbolinks": "^5.2.0"
+        "tailwindcss-tables": "^0.4.0"
     }
 }

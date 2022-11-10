@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form id="payment-form" action="{{ route('sale-payments.store') }}" method="POST">
+        <form id="payment-form" action="{{ route('admin-order-payments.store') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-lg-12">
@@ -20,7 +20,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="reference">{{__('Reference')}} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="reference" required readonly value="INV/{{ $order->reference }}">
+                                        <input type="text" class="form-control" name="reference" required readonly value="INV/{{ $order->code }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

@@ -11,14 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require("@tailwindcss/jit"),
-    ])
+ mix.js('resources/js/app.js', 'public/js')
     .copy(
         'node_modules/@fortawesome/fontawesome-free/webfonts',
         'public/webfonts'
-    );
+    )
+    .postCss('resources/css/app.css', 'public/css', [
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+    ]);
+
 
 if (mix.inProduction()) {
     mix.version();

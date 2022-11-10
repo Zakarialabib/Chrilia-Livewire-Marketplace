@@ -7,8 +7,10 @@
     <!-- Toastr -->
     <script type="text/javascript"  src="{{ asset('assets/js/toastr.min.js') }}"></script>
     
-    <!-- SweetAlert -->
-    <script type="text/javascript"  href="{{ asset('assets/js/sweetalert2.min.js') }}" ></script>
+    <x-livewire-alert::scripts />
+
+    {{-- <!-- SweetAlert -->
+    <script type="text/javascript"  href="{{ asset('assets/js/sweetalert2.min.js') }}" ></script> --}}
     
     <!-- Popper JS -->
     <script type="text/javascript"  src="{{ asset('assets/js/popper.min.js') }}"></script>

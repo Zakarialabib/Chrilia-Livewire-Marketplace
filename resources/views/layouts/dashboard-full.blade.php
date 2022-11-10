@@ -12,18 +12,13 @@
     <meta property="og:locale" content="{{ app()->getLocale() }}" />
     <link rel="icon" type="image/png" href="{{ asset('uploads/' . config('settings.site_favicon')) }}" />
 
-    <meta name="robots" content="all,follow">
+    <meta name="robots" content="nofollow">
 
     <title>{{ config('settings.site_title') }} - @yield('title')</title>
 
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     @livewireStyles
-
-    <!-- Toastr -->
-    <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet">
-    <!-- Sweet Alert 2 -->
-    <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet">
 
     @stack('styles')
 
@@ -68,23 +63,6 @@
     @livewireScripts
 
     <script defer type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-
-    {{-- <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script> --}}
-
-    <!-- Toastr -->
-    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
-
-    <!-- Sweetalert2 -->
-    <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
-
-    <!-- Popper JS -->
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-
-    <!-- Custom JS -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
 
     @stack('scripts')
 

@@ -14,7 +14,7 @@ class OrderPaymentsController extends Controller
 {
 
     public function index($order_id) {
-        // abort_if(Gate::denies('access_order_payments'), 403);
+        // abort_if(Gate::denies('admin_order_payments'), 403);
 
         $order = Order::findOrFail($order_id);
 
@@ -23,7 +23,7 @@ class OrderPaymentsController extends Controller
 
 
     public function create($order_id) {
-        // abort_if(Gate::denies('access_order_payments'), 403);
+        // abort_if(Gate::denies('admin_order_payments'), 403);
 
         $order = Order::findOrFail($order_id);
 
@@ -32,7 +32,7 @@ class OrderPaymentsController extends Controller
 
 
     public function store(Request $request) {
-        // abort_if(Gate::denies('access_order_payments'), 403);
+        // abort_if(Gate::denies('admin_order_payments'), 403);
 
         $request->validate([
             'date' => 'required|date',
@@ -79,7 +79,7 @@ class OrderPaymentsController extends Controller
 
 
     public function edit($order_id, OrderPayment $orderPayment) {
-        // abort_if(Gate::denies('access_order_payments'), 403);
+        // abort_if(Gate::denies('admin_order_payments'), 403);
 
         $order = Order::findOrFail($order_id);
 
@@ -88,7 +88,7 @@ class OrderPaymentsController extends Controller
 
 
     public function update(Request $request, OrderPayment $orderPayment) {
-        // abort_if(Gate::denies('access_order_payments'), 403);
+        // abort_if(Gate::denies('admin_order_payments'), 403);
 
         $request->validate([
             'date' => 'required|date',
@@ -135,7 +135,7 @@ class OrderPaymentsController extends Controller
 
 
     public function destroy(OrderPayment $orderPayment) {
-        // abort_if(Gate::denies('access_order_payments'), 403);
+        // abort_if(Gate::denies('admin_order_payments'), 403);
 
         $orderPayment->delete();
 

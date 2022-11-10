@@ -14,11 +14,12 @@ class PhoneController extends Controller
 
     public function index()
     {
+        // abort_if(Gate::denies('admin_phone_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.phone.index');
     }
     public function brandDetail($brand_slug)
     {
-        // abort_if(Gate::denies('route_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('admin_brand_management'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         // dd($data['data']);
             $data = Http::get("https://api-mobilespecs.azharimm.site/v2/brands/$brand_slug")->json();
 
@@ -45,21 +46,21 @@ class PhoneController extends Controller
 
     public function create()
     {
-      //  abort_if(Gate::denies('permission_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+      //  abort_if(Gate::denies('admin_phone_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('admin.phone.create');
     }
 
     public function edit(Phone $phone)
     {
-        // abort_if(Gate::denies('permission_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('admin_phone_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('admin.phone.edit', compact('phone'));
     }
 
     public function show(Phone $phone)
     {
-        // abort_if(Gate::denies('permission_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('admin_phone_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('admin.phone.show', compact('phone'));
     }

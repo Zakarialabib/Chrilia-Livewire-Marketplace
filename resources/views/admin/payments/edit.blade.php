@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <form id="payment-form" action="{{ route('sale-payments.update', $orderPayment) }}" method="POST">
+        <form id="payment-form" action="{{ route('admin-order-payments.update', $orderPayment) }}" method="POST">
             @csrf
             @method('patch')
             <div class="row">

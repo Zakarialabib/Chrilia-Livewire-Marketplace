@@ -5,6 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="title" content="{{ config('settings.seo_meta_title') }}">
+    <meta name="description" content="{{ config('settings.seo_meta_description') }}">
+    <meta property="og:description" content="{{ config('settings.seo_meta_description') }}">
+    <meta name="author" content="{{ config('settings.company_name') }}">
+    <meta property="og:locale" content="{{ app()->getLocale() }}" />
+    <link rel="icon" type="image/png" href="{{ asset('uploads/' . config('settings.site_favicon')) }}" />
+
+    <meta name="robots" content="nofollow">
 
     <title>{{ config('settings.site_title') }} - @yield('title')</title>
     

@@ -53,7 +53,7 @@ return [
     |
     */
 
-    'asset_base_url' => '/assets',
+    'asset_base_url' => '/ChriliaMarkeplace',
 
     /*
     |--------------------------------------------------------------------------

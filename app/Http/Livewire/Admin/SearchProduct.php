@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Modules\Product\Entities\Product;
+use App\Models\Product;
 
 class SearchProduct extends Component
 {

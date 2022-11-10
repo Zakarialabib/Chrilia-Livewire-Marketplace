@@ -89,14 +89,6 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tr>
-                        <th>Order Tax ({{ $global_tax }}%)</th>
-                        <td>(+) {{ Cart::instance($cart_instance)->tax() }}</td>
-                    </tr>
-                    <tr>
-                        <th>Discount ({{ $global_discount }}%)</th>
-                        <td>(-) {{ Cart::instance($cart_instance)->discount() }}</td>
-                    </tr>
-                    <tr>
                         <th>Shipping</th>
                         <input type="hidden" value="{{ $shipping }}" name="shipping_amount">
                         <td>(+) {{ $shipping }}</td>
@@ -118,18 +110,6 @@
     <input type="hidden" name="total_amount" value="{{ $total_with_shipping }}">
 
     <div class="form-row">
-        <div class="col-lg-4">
-            <div class="form-group">
-                <label for="tax_percentage">Order Tax (%)</label>
-                <input wire:model.lazy="global_tax" type="number" class="form-control" name="tax_percentage" min="0" max="100" value="{{ $global_tax }}" required>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="form-group">
-                <label for="discount_percentage">Discount (%)</label>
-                <input wire:model.lazy="global_discount" type="number" class="form-control" name="discount_percentage" min="0" max="100" value="{{ $global_discount }}" required>
-            </div>
-        </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label for="shipping_amount">Shipping</label>

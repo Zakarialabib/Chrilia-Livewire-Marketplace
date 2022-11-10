@@ -6,7 +6,7 @@
             <div wire:loading.flex class="w-1/62 absolute justify-content-center align-items-center"
                 style="top:0;right:0;left:0;bottom:0;background-color: rgba(255,255,255,0.5);z-index: 99;">
                 <div class="spinner-border text-blue" role="status">
-                    <span class="">Loading...</span>
+                    <span class="">{{__('Loading...')}}</span>
                 </div>
             </div>
             @forelse($products as $product)
@@ -17,7 +17,7 @@
                             <img height="200" src="{{ $product->getFirstMediaUrl('images') }}"
                                 class="w-full rounded rounded-t" alt="Product Image">
                             <div class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded text-teal-darker bg-teal-light mb-3 position-absolute"
-                                style="left:10px;top: 10px;">Stock: {{ $product->quantity }}</div>
+                                style="left:10px;top: 10px;">{{__('Stock')}}: {{ $product->quantity }}</div>
                         </div>
                         <div class="card-body">
                             <div class="mb-2">
@@ -34,7 +34,7 @@
                 <div class="w-full">
                     <div
                         class="relative px-3 py-3 mb-4 border rounded text-yellow-darker border-yellow-dark bg-yellow-lighter ">
-                        Products Not Found...
+                        {{__('Products Not Found...')}}
                     </div>
                 </div>
             @endforelse

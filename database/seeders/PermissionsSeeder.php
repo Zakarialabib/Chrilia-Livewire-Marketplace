@@ -171,6 +171,34 @@ class PermissionsSeeder extends Seeder
                 'id'    => 39,
                 'title' => 'vendor_product_management',
             ],
+            [
+                'id'    => 40,
+                'title' => 'admin_phone_management',
+            ],
+            [
+                'id'    => 41,
+                'title' => 'admin_order_payments',
+            ],
+            [
+                'id'    => 42,
+                'title' => 'admin_brand_management',
+            ],
+            [
+                'id'    => 43,
+                'title' => 'admin_phone_create',
+            ],
+            [
+                'id'    => 44,
+                'title' => 'admin_phone_edit',
+            ],
+            [
+                'id'    => 45,
+                'title' => 'admin_phone_show',
+            ],
+            [
+                'id'    => 46,
+                'title' => 'admin_reports',
+            ],
         ];
 
         Permission::insert($permissions);

@@ -7,19 +7,21 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
-use App\Models\Category;
-use App\Models\Product;
-use Modules\Sale\Entities\Sale;
-use Modules\Sale\Entities\SaleDetails;
-use Modules\Sale\Entities\orderPayment;
-use Modules\Sale\Http\Requests\StorePosSaleRequest;
+use App\Models\{    
+    User,
+    Category,
+    Product,
+    Order,
+    OrderDetails,
+    OrderPayment
+};
+use Modules\Order\Http\Requests\StorePosOrderRequest;
 
 class PosController extends Controller
 {
 
     public function index() {
-        Cart::instance('sale')->destroy();
+        Cart::instance('order')->destroy();
 
         $customers = User::all();
         $product_categories = Category::all();
@@ -28,7 +30,7 @@ class PosController extends Controller
     }
 
 
-    public function store(StorePosSaleRequest $request) {
+    public function store(StorePosOrderRequest $request) {
         DB::transaction(function () use ($request) {
             $due_amount = $request->total_amount - $request->paid_amount;
 
@@ -40,13 +42,11 @@ class PosController extends Controller
                 $payment_status = 'Paid';
             }
 
-            $sale = Sale::create([
-                'date' => now()->format('Y-m-d'),
-                'reference' => 'PSL',
-                'customer_id' => $request->customer_id,
-                'customer_name' => User::findOrFail($request->customer_id)->customer_name,
-                'tax_percentage' => $request->tax_percentage,
-                'discount_percentage' => $request->discount_percentage,
+            $order = Order::create([
+                'created_at' => now()->format('Y-m-d'),
+                'code' => 'PSL',
+                'client_id' => $request->client_id,
+                'customer_name' => User::findOrFail($request->client_id)->customer_name,
                 'shipping_amount' => $request->shipping_amount * 100,
                 'paid_amount' => $request->paid_amount * 100,
                 'total_amount' => $request->total_amount * 100,
@@ -55,13 +55,11 @@ class PosController extends Controller
                 'payment_status' => $payment_status,
                 'payment_method' => $request->payment_method,
                 'note' => $request->note,
-                'tax_amount' => Cart::instance('sale')->tax() * 100,
-                'discount_amount' => Cart::instance('sale')->discount() * 100,
             ]);
 
-            foreach (Cart::instance('sale')->content() as $cart_item) {
-                SaleDetails::create([
-                    'sale_id' => $sale->id,
+            foreach (Cart::instance('order')->content() as $cart_item) {
+                OrderDetails::create([
+                    'order_id' => $order->id,
                     'product_id' => $cart_item->id,
                     'product_name' => $cart_item->name,
                     'product_code' => $cart_item->options->code,
@@ -69,9 +67,6 @@ class PosController extends Controller
                     'price' => $cart_item->price * 100,
                     'unit_price' => $cart_item->options->unit_price * 100,
                     'sub_total' => $cart_item->options->sub_total * 100,
-                    'product_discount_amount' => $cart_item->options->product_discount * 100,
-                    'product_discount_type' => $cart_item->options->product_discount_type,
-                    'product_tax_amount' => $cart_item->options->product_tax * 100,
                 ]);
 
                 $product = Product::findOrFail($cart_item->id);
@@ -80,20 +75,20 @@ class PosController extends Controller
                 ]);
             }
 
-            Cart::instance('sale')->destroy();
+            Cart::instance('order')->destroy();
 
-            if ($sale->paid_amount > 0) {
-                orderPayment::create([
+            if ($order->paid_amount > 0) {
+                OrderPayment::create([
                     'date' => now()->format('Y-m-d'),
-                    'reference' => 'INV/'.$sale->reference,
-                    'amount' => $sale->paid_amount,
-                    'sale_id' => $sale->id,
+                    'reference' => 'INV/'.$order->code,
+                    'amount' => $order->paid_amount,
+                    'order_id' => $order->id,
                     'payment_method' => $request->payment_method
                 ]);
             }
         });
 
-        toast('POS Sale Created!', 'success');
+        toast('POS Order Created!', 'success');
 
         return redirect()->route('admin.orders.index');
     }

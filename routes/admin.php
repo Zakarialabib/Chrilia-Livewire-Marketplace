@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\Admin\OrderPaymentsController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ReportController;
@@ -67,8 +68,43 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     // Orders
     Route::resource('orders', AdminOrderController::class, ['except' => ['store', 'update', 'destroy']]);
     Route::get('order-invoice/{id}', [AdminOrderController::class, 'orderInvoice'])->name('orders.invoice');
+   
+     //Generate PDF
+     Route::get('/orders/pdf/{id}', function ($id) {
+         $order = \App\Models\Order::findOrFail($id);
+         $customer = \App\Models\User::findOrFail($order->customer_id);
+ 
+         $pdf = \PDF::loadView('print.print', [
+             'order' => $order,
+             'customer' => $customer,
+         ])->setPaper('a4');
+ 
+         return $pdf->stream('order-'. $order->code .'.pdf');
+     })->name('orders.pdf');
+ 
+     Route::get('/orders/pos/pdf/{id}', function ($id) {
+         $order = \App\Models\Order::findOrFail($id);
+ 
+         $pdf = \PDF::loadView('print.print-pos', [
+             'order' => $order,
+         ])->setPaper('a7')
+             ->setOption('margin-top', 8)
+             ->setOption('margin-bottom', 8)
+             ->setOption('margin-left', 5)
+             ->setOption('margin-right', 5);
+ 
+         return $pdf->stream('order-'. $order->reference .'.pdf');
+     })->name('orders.pos.pdf');
+ 
+     //Payments
+     Route::get('/order-payments/{order_id}', [OrderPaymentsController::class, 'index'])->name('order-payments.index');
+     Route::get('/order-payments/{order_id}/create', [OrderPaymentsController::class, 'create'])->name('order-payments.create');
+     Route::post('/order-payments/store', [OrderPaymentsController::class, 'store'])->name('order-payments.store');
+     Route::get('/order-payments/{order_id}/edit/{orderPayment}', [OrderPaymentsController::class, 'edit'])->name('order-payments.edit');
+     Route::patch('/order-payments/update/{orderPayment}', [OrderPaymentsController::class, 'update'])->name('order-payments.update');
+     Route::delete('/order-payments/destroy/{orderPayment}',  [OrderPaymentsController::class, 'destroy'])->name('order-payments.destroy');
     
-    //POS
+     //POS
     Route::get('pos', [PosController::class, 'index'])->name('pos.index');
     Route::post('pos', [PosController::class, 'store'])->name('pos.store');
 

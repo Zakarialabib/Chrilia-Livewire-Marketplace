@@ -90,7 +90,7 @@
                                     <td>{{ $data->reference }}</td>
                                     <td>
                                         @if($payments == 'order')
-                                            {{ $data->order->reference }}
+                                            {{ $data->order->code }}
                                         @endif
                                     </td>
                                     <td>{{ format_currency($data->amount) }}</td>
